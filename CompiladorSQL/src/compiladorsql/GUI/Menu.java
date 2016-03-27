@@ -35,6 +35,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
  */
 public class Menu extends javax.swing.JFrame {
     private GramaticaParser parser;
+    //este comentario es para llenar espacio
     private ParseTree tree;
     /**
      * Creates new form Menu
