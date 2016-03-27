@@ -43,9 +43,11 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jFileChooser1 = new javax.swing.JFileChooser();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaInput = new javax.swing.JTextArea();
+        panelEditor = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAreaInput = new javax.swing.JTextPane();
+        jPanel2 = new javax.swing.JPanel();
         txtAreaErrores = new java.awt.TextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -57,17 +59,39 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Compilador SQL");
 
-        txtAreaInput.setColumns(20);
+        panelEditor.setForeground(new java.awt.Color(0, 0, 0));
+
         txtAreaInput.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
-        txtAreaInput.setRows(5);
-        jScrollPane1.setViewportView(txtAreaInput);
+        jScrollPane2.setViewportView(txtAreaInput);
 
-        jTabbedPane1.addTab("Editor", jScrollPane1);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+        );
 
-        txtAreaErrores.setEditable(false);
-        txtAreaErrores.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
-        txtAreaErrores.setForeground(new java.awt.Color(255, 0, 0));
-        jTabbedPane1.addTab("Errores", txtAreaErrores);
+        panelEditor.addTab("Editor", jPanel1);
+
+        txtAreaErrores.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 15)); // NOI18N
+        txtAreaErrores.setForeground(new java.awt.Color(255, 51, 51));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtAreaErrores, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtAreaErrores, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+        );
+
+        panelEditor.addTab("Errores", jPanel2);
 
         jMenu1.setText("File");
 
@@ -109,11 +133,11 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE)
+            .addComponent(panelEditor)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+            .addComponent(panelEditor)
         );
 
         pack();
@@ -125,14 +149,15 @@ public class Menu extends javax.swing.JFrame {
             File file = this.jFileChooser1.getSelectedFile();
             try {
                 BufferedReader br=new BufferedReader(new FileReader(file.getPath()));
-                String s="";
+                String s="",s1="";
                 this.txtAreaInput.setText("");
                 while(((s=br.readLine())!=null)){
-                    this.txtAreaInput.append(s+newline);
+                    s1+=(s+newline);
                 }
                 if(br!=null){
                     br.close();
                 }
+                this.txtAreaInput.setText(s1);
                 lastPath=file.getAbsolutePath();
                 
             } catch (FileNotFoundException ex) {
@@ -170,6 +195,7 @@ public class Menu extends javax.swing.JFrame {
     private void menuEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEjecutarActionPerformed
         CompiladorSQL comp=new CompiladorSQL();
         this.txtAreaErrores.setText("ESTE ES UN ERROR");
+        
     }//GEN-LAST:event_menuEjecutarActionPerformed
 
     /**
@@ -212,12 +238,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenuItem menuAbrir;
     private javax.swing.JMenuItem menuEjecutar;
     private javax.swing.JMenuItem menuGuardar;
+    private javax.swing.JTabbedPane panelEditor;
     private java.awt.TextArea txtAreaErrores;
-    private javax.swing.JTextArea txtAreaInput;
+    private javax.swing.JTextPane txtAreaInput;
     // End of variables declaration//GEN-END:variables
 }
