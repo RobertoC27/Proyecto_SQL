@@ -6,6 +6,7 @@
 package compiladorsql.GUI;
 
 import compiladorsql.CompiladorSQL;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,6 +18,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 
 /**
  *
@@ -27,7 +33,75 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
+    private int findLastNonWordChar (String text, int index) {
+        while (--index >= 0) {
+            if (String.valueOf(text.charAt(index)).matches("\\W")) {
+                break;
+            }
+        }
+        return index;
+    }
+
+    private int findFirstNonWordChar (String text, int index) {
+        while (index < text.length()) {
+            if (String.valueOf(text.charAt(index)).matches("\\W")) {
+                break;
+            }
+            index++;
+        }
+        return index;
+    }
+    DefaultStyledDocument doc = new DefaultStyledDocument() 
+        {
+            @Override
+            public void insertString (int offset, String str, AttributeSet a) throws BadLocationException {
+                super.insertString(offset, str, a);
+
+                String text = getText(0, getLength());
+                int before = findLastNonWordChar(text, offset);
+                if (before < 0) before = 0;
+                int after = findFirstNonWordChar(text, offset + str.length());
+                int wordL = before;
+                int wordR = before;
+                
+                while (wordR <= after) {
+                    if (wordR == after || String.valueOf(text.charAt(wordR)).matches("\\W")) 
+                    {
+                        if (text.substring(wordL, wordR).matches("(\\W)*"+regex_reserved_1))
+                            setCharacterAttributes(wordL, wordR - wordL, attrBlue, false);
+                        else
+                            setCharacterAttributes(wordL, wordR - wordL, attrBlack, false);
+                        wordL = wordR;
+                    }
+                    wordR++;
+                }
+            }
+            @Override
+            public void remove (int offs, int len) throws BadLocationException {
+                super.remove(offs, len);
+
+                String text = getText(0, getLength());
+                int before = findLastNonWordChar(text, offs);
+                if (before < 0) before = 0;
+                int after = findFirstNonWordChar(text, offs);
+
+                if (text.substring(before, after).matches("(\\W)*"+regex_reserved_1)) {
+                    setCharacterAttributes(before, after - before, attrBlue, false);
+                }
+                else {
+                    setCharacterAttributes(before, after - before, attrBlack, false);
+                }
+            }
+    };
+    final StyleContext cont = StyleContext.getDefaultStyleContext();
+    final String regex_reserved_1="(((C|c)(R|r)(E|e)(A|a)(T|t)(E|e))|((D|d)(A|a)(T|t)(A|a)(B|b)(A|a)(S|s)(E|e))|((D|d)(A|a)(T|t)(A|a)(B|b)(A|a)(S|s)(E|e)(S|s))|((D|d)(R|r)(O|o)(P|p))|((U|u)(S|s)(E|e))|((S|s)(H|h)(O|o)(W|w))|((A|a)(L|l)(T|t)(E|e)(R|r))|((R|r)(E|e)(N|n)(A|a)(M|m)(E|e))|((T|t)(O|o))|((T|t)(A|a)(B|b)(L|l)(E|e))|((T|t)(A|a)(B|b)(L|l)(E|e)(S|s))|((C|c)(O|o)(N|n)(S|s)(T|t)(R|r)(A|a)(I|i)(N|n)(T|t))|((C|c)(O|o)(L|l)(U|u)(M|m)(N|n))|((C|c)(O|o)(L|l)(U|u)(M|m)(N|n)(S|s))|((F|f)(R|r)(O|o)(M|m))|((A|a)(D|d)(D|d))|((S|s)(E|e)(L|l)(E|e)(C|c)(T|t))|((W|w)(H|h)(E|e)(R|r)(E|e))|((I|i)(N|n)(T|t))|((D|d)(A|a)(T|t)(E|e))|((C|c)(H|h)(A|a)(R|r))|((F|f)(L|l)(O|o)(A|a)(T|t))|((P|p)(R|r)(I|i)(M|m)(A|a)(R|r)(Y|y))|((C|c)(H|h)(E|e)(C|c)(K|k))|((R|r)(E|e)(F|f)(E|e)(R|r)(E|e)(N|n)(C|c)(E|e)(S|s))|((F|f)(O|o)(R|r)(E|e)(I|i)(G|g)(N|n))|((K|k)(E|e)(Y|y))|((I|i)(N|n)(S|s)(E|e)(R|r)(T|t))|((I|i)(N|n)(T|t)(O|o))|((V|v)(A|a)(L|l)(U|u)(E|e)(S|s))|((O|o)(R|r)(D|d)(E|e)(R|r))|((S|s)(E|e)(T|t))|((U|u)(P|p)(D|d)(A|a)(T|t)(E|e))|((B|b)(Y|y))|((A|a)(S|s)(C|c))|((D|d)(E|e)(S|s)(C|c))|((A|a)(N|n)(D|d))|((O|o)(R|r))|((N|n)(O|o)(T|t))|((N|n)(U|u)(L|l)(L|l))|((D|d)(E|e)(L|l)(E|e)(T|t)(E|e)))";
+//final String regex_reserved_1 = regex_reserved_12.replaceAll("'", "");
+    final AttributeSet attrBlue = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE);
+    final AttributeSet attrBlack = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
     public Menu() {
+        
+        
+        
         initComponents();
     }
 
@@ -46,7 +120,7 @@ public class Menu extends javax.swing.JFrame {
         panelEditor = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtAreaInput = new javax.swing.JTextPane();
+        txtAreaInput = new javax.swing.JTextPane(doc);
         jPanel2 = new javax.swing.JPanel();
         txtAreaErrores = new java.awt.TextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -58,8 +132,6 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Compilador SQL");
-
-        panelEditor.setForeground(new java.awt.Color(0, 0, 0));
 
         txtAreaInput.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
         jScrollPane2.setViewportView(txtAreaInput);

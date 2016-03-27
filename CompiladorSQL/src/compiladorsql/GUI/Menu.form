@@ -89,11 +89,6 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="panelEditor">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
-        </Property>
-      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -132,6 +127,9 @@
                       <Font name="DialogInput" size="18" style="0"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextPane(doc)"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
