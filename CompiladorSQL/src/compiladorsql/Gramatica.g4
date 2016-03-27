@@ -129,7 +129,9 @@ constraints: (CONSTRAINT constraint (COMMA CONSTRAINT constraint)*);
 tableAction: ADD COLUMN ID type (constraints)
 | ADD CONSTRAINT constraint
 | DROP COLUMN ID
-| DROP CONSTRAINT ID;
+| DROP CONSTRAINT ID
+| RENAME TO ID
+;
 
 type: INT | FLOAT | DATE | CHAR LPARENT NUM RPARENT;
 
