@@ -1,6 +1,10 @@
 drop database prueba3;
 create database prueba3;
 use database prueba3;
-create table carro (tipo int, descripcion char(20) constraint primary key pk (tipo, descripcion));
-create table bmw (tipo int, algo int constraint foreign key fk (tipo) references carro (tipo));
+create table carro (tipo int, descripcion char(20) constraint pk1 primary key  (tipo, descripcion));
+create table bmw (tipo int, algo int constraint pk2 foreign key (tipo) references carro (tipo));
 show tables;
+
+CREATE DATABASE tienda;
+USE DATABASE tienda;
+CREATE TABLE cliente (id int, jtg int, ljro float, oajieo char(2) CONSTRAINT pkCliente PRIMARY KEY  (id));
