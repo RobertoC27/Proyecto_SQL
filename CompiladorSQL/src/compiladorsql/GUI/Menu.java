@@ -58,12 +58,14 @@ public class Menu extends javax.swing.JFrame {
         setTitle("Compilador SQL");
 
         txtAreaInput.setColumns(20);
+        txtAreaInput.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
         txtAreaInput.setRows(5);
         jScrollPane1.setViewportView(txtAreaInput);
 
         jTabbedPane1.addTab("Editor", jScrollPane1);
 
         txtAreaErrores.setEditable(false);
+        txtAreaErrores.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
         txtAreaErrores.setForeground(new java.awt.Color(255, 0, 0));
         jTabbedPane1.addTab("Errores", txtAreaErrores);
 
