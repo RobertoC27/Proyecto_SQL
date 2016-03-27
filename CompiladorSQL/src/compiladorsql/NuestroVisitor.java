@@ -9,8 +9,6 @@ package compiladorsql;
  *
  * @author user
  */
-public class CompiladorSQL {
-
-    
+public class NuestroVisitor<T> extends GramaticaBaseVisitor{
     
 }
