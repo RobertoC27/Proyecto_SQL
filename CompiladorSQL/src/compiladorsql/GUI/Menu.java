@@ -23,13 +23,20 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
+import compiladorsql.GramaticaLexer;
+import compiladorsql.GramaticaParser;
+import org.antlr.v4.gui.Trees;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 /**
  *
  * @author user
  */
 public class Menu extends javax.swing.JFrame {
-
+    GramaticaParser parser;
+    ParseTree tree;
     /**
      * Creates new form Menu
      */
@@ -267,7 +274,15 @@ public class Menu extends javax.swing.JFrame {
     private void menuEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEjecutarActionPerformed
         CompiladorSQL comp=new CompiladorSQL();
         this.txtAreaErrores.setText("ESTE ES UN ERROR");
-        
+        String texto = txtAreaInput.getText();        
+        ANTLRInputStream in = new ANTLRInputStream(texto);
+        GramaticaLexer lexer = new GramaticaLexer(in);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        parser = new GramaticaParser(tokens);
+//        parser.removeErrorListeners();
+        tree = parser.sqlProgram();
+        //parser.addErrorListener();
+        Trees.inspect(tree, parser);
     }//GEN-LAST:event_menuEjecutarActionPerformed
 
     /**
