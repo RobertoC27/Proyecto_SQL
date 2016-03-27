@@ -34,8 +34,8 @@ import org.antlr.v4.runtime.tree.ParseTree;
  * @author user
  */
 public class Menu extends javax.swing.JFrame {
-    GramaticaParser parser;
-    ParseTree tree;
+    private GramaticaParser parser;
+    private ParseTree tree;
     /**
      * Creates new form Menu
      */
@@ -99,11 +99,11 @@ public class Menu extends javax.swing.JFrame {
                 }
             }
     };
-    final StyleContext cont = StyleContext.getDefaultStyleContext();
-    final String regex_reserved_1="(((C|c)(R|r)(E|e)(A|a)(T|t)(E|e))|((D|d)(A|a)(T|t)(A|a)(B|b)(A|a)(S|s)(E|e))|((D|d)(A|a)(T|t)(A|a)(B|b)(A|a)(S|s)(E|e)(S|s))|((D|d)(R|r)(O|o)(P|p))|((U|u)(S|s)(E|e))|((S|s)(H|h)(O|o)(W|w))|((A|a)(L|l)(T|t)(E|e)(R|r))|((R|r)(E|e)(N|n)(A|a)(M|m)(E|e))|((T|t)(O|o))|((T|t)(A|a)(B|b)(L|l)(E|e))|((T|t)(A|a)(B|b)(L|l)(E|e)(S|s))|((C|c)(O|o)(N|n)(S|s)(T|t)(R|r)(A|a)(I|i)(N|n)(T|t))|((C|c)(O|o)(L|l)(U|u)(M|m)(N|n))|((C|c)(O|o)(L|l)(U|u)(M|m)(N|n)(S|s))|((F|f)(R|r)(O|o)(M|m))|((A|a)(D|d)(D|d))|((S|s)(E|e)(L|l)(E|e)(C|c)(T|t))|((W|w)(H|h)(E|e)(R|r)(E|e))|((I|i)(N|n)(T|t))|((D|d)(A|a)(T|t)(E|e))|((C|c)(H|h)(A|a)(R|r))|((F|f)(L|l)(O|o)(A|a)(T|t))|((P|p)(R|r)(I|i)(M|m)(A|a)(R|r)(Y|y))|((C|c)(H|h)(E|e)(C|c)(K|k))|((R|r)(E|e)(F|f)(E|e)(R|r)(E|e)(N|n)(C|c)(E|e)(S|s))|((F|f)(O|o)(R|r)(E|e)(I|i)(G|g)(N|n))|((K|k)(E|e)(Y|y))|((I|i)(N|n)(S|s)(E|e)(R|r)(T|t))|((I|i)(N|n)(T|t)(O|o))|((V|v)(A|a)(L|l)(U|u)(E|e)(S|s))|((O|o)(R|r)(D|d)(E|e)(R|r))|((S|s)(E|e)(T|t))|((U|u)(P|p)(D|d)(A|a)(T|t)(E|e))|((B|b)(Y|y))|((A|a)(S|s)(C|c))|((D|d)(E|e)(S|s)(C|c))|((A|a)(N|n)(D|d))|((O|o)(R|r))|((N|n)(O|o)(T|t))|((N|n)(U|u)(L|l)(L|l))|((D|d)(E|e)(L|l)(E|e)(T|t)(E|e)))";
+    private final StyleContext cont = StyleContext.getDefaultStyleContext();
+    private final String regex_reserved_1="(((C|c)(R|r)(E|e)(A|a)(T|t)(E|e))|((D|d)(A|a)(T|t)(A|a)(B|b)(A|a)(S|s)(E|e))|((D|d)(A|a)(T|t)(A|a)(B|b)(A|a)(S|s)(E|e)(S|s))|((D|d)(R|r)(O|o)(P|p))|((U|u)(S|s)(E|e))|((S|s)(H|h)(O|o)(W|w))|((A|a)(L|l)(T|t)(E|e)(R|r))|((R|r)(E|e)(N|n)(A|a)(M|m)(E|e))|((T|t)(O|o))|((T|t)(A|a)(B|b)(L|l)(E|e))|((T|t)(A|a)(B|b)(L|l)(E|e)(S|s))|((C|c)(O|o)(N|n)(S|s)(T|t)(R|r)(A|a)(I|i)(N|n)(T|t))|((C|c)(O|o)(L|l)(U|u)(M|m)(N|n))|((C|c)(O|o)(L|l)(U|u)(M|m)(N|n)(S|s))|((F|f)(R|r)(O|o)(M|m))|((A|a)(D|d)(D|d))|((S|s)(E|e)(L|l)(E|e)(C|c)(T|t))|((W|w)(H|h)(E|e)(R|r)(E|e))|((I|i)(N|n)(T|t))|((D|d)(A|a)(T|t)(E|e))|((C|c)(H|h)(A|a)(R|r))|((F|f)(L|l)(O|o)(A|a)(T|t))|((P|p)(R|r)(I|i)(M|m)(A|a)(R|r)(Y|y))|((C|c)(H|h)(E|e)(C|c)(K|k))|((R|r)(E|e)(F|f)(E|e)(R|r)(E|e)(N|n)(C|c)(E|e)(S|s))|((F|f)(O|o)(R|r)(E|e)(I|i)(G|g)(N|n))|((K|k)(E|e)(Y|y))|((I|i)(N|n)(S|s)(E|e)(R|r)(T|t))|((I|i)(N|n)(T|t)(O|o))|((V|v)(A|a)(L|l)(U|u)(E|e)(S|s))|((O|o)(R|r)(D|d)(E|e)(R|r))|((S|s)(E|e)(T|t))|((U|u)(P|p)(D|d)(A|a)(T|t)(E|e))|((B|b)(Y|y))|((A|a)(S|s)(C|c))|((D|d)(E|e)(S|s)(C|c))|((A|a)(N|n)(D|d))|((O|o)(R|r))|((N|n)(O|o)(T|t))|((N|n)(U|u)(L|l)(L|l))|((D|d)(E|e)(L|l)(E|e)(T|t)(E|e)))";
 //final String regex_reserved_1 = regex_reserved_12.replaceAll("'", "");
-    final AttributeSet attrBlue = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE);
-    final AttributeSet attrBlack = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
+    private final AttributeSet attrBlue = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE);
+    private final AttributeSet attrBlack = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
     public Menu() {
         
         
