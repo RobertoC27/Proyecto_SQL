@@ -1,5 +1,4 @@
 // Generated from C:\Users\juankboix1309\Documents\NetBeansProjects\Proyecto_SQL\CompiladorSQL\src\compiladorsql\Gramatica.g4 by ANTLR 4.2.2
-package compiladorsql.grammar;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
