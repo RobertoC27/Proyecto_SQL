@@ -91,7 +91,7 @@ NUM_DATE:  '\'' DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '\'';
 CHARACTER: '\''~('\r'|'\n'|'\'')* '\'';
 DOTCOMMA: ';';
 LPARENT: '(';
-RPARENT: '(';
+RPARENT: ')';
 COMMA: ',';
 DOT: '.';
 EQ: '=';
@@ -103,7 +103,7 @@ EQGTHAN: '>=';
 MINUS: '-';
 ASTERISK: '*';
 //prods
-sqlProgram : statement (DOTCOMMA statement)* (DOTCOMMA)?;
+sqlProgram : statement (DOTCOMMA statement)* (DOTCOMMA)? EOF;
 
 statement: dbOperation | tOperation | dOperation;
 
