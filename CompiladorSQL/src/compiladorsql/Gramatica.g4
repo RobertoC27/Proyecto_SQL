@@ -114,17 +114,17 @@ dbOperation: CREATE DATABASE ID
 | ALTER DATABASE ID RENAME TO ID;
 
 dOperation: insert 
-| update 
+| update
 | delete 
 | query;
 
-tOperation: CREATE TABLE ID LPARENT (ID type (COMMA ID type)*)+ (constraints) RPARENT
+tOperation: CREATE TABLE ID LPARENT ID type (COMMA ID type)* (constraints)* RPARENT
 | ALTER TABLE ID (tableAction (COMMA tableAction)*)+
 | DROP TABLE ID
 | SHOW TABLES
 | SHOW COLUMNS FROM ID;
 
-constraints: (CONSTRAINT constraint (COMMA CONSTRAINT constraint)*)*;
+constraints: (CONSTRAINT constraint (COMMA CONSTRAINT constraint)*);
 
 tableAction: ADD COLUMN ID type (constraints)
 | ADD CONSTRAINT constraint
@@ -134,10 +134,11 @@ tableAction: ADD COLUMN ID type (constraints)
 type: INT | FLOAT | DATE | CHAR LPARENT NUM RPARENT;
 
 constraint: ID PRIMARY KEY LPARENT (ID(COMMA ID)*)* RPARENT
-| ID FOREIGN KEY LPARENT (ID(COMMA ID)*)*RPARENT
-| ID CHECK (exp1);
+| ID FOREIGN KEY  LPARENT (ID (COMMA ID)*)* RPARENT references
+| ID CHECK (exp1)
+;
 
-references: REFERENCES ID LPARENT (ID(COMMA ID)*)*RPARENT;
+references: REFERENCES ID (LPARENT (ID(COMMA ID)*)* RPARENT)*;
 
 exp1: exp2;
 
