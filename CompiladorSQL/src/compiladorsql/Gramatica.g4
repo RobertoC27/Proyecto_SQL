@@ -126,7 +126,7 @@ tOperation: CREATE TABLE ID LPARENT ID type (COMMA ID type)* (constraints)* RPAR
 
 constraints: (CONSTRAINT constraint (COMMA CONSTRAINT constraint)*);
 
-tableAction: ADD COLUMN ID type (constraints)
+tableAction: ADD COLUMN ID type (constraints | )
 | ADD CONSTRAINT constraint
 | DROP COLUMN ID
 | DROP CONSTRAINT ID
