@@ -138,7 +138,7 @@ constraint: ID PRIMARY KEY LPARENT (ID(COMMA ID)*)* RPARENT
 | ID CHECK (exp1)
 ;
 
-references: REFERENCES ID (LPARENT (ID(COMMA ID)*)* RPARENT)*;
+references: REFERENCES ID (LPARENT (ID(COMMA ID)*)* RPARENT)?;
 
 exp1: exp2;
 
