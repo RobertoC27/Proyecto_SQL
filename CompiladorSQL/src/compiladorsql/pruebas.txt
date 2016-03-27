@@ -1,1 +1,6 @@
-archivo de pruebas
+drop database prueba3;
+create database prueba3;
+use database prueba3;
+create table carro (tipo int, descripcion char(20) constraint primary key pk (tipo, descripcion));
+create table bmw (tipo int, algo int constraint foreign key fk (tipo) references carro (tipo));
+show tables;
