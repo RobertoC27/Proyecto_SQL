@@ -184,7 +184,7 @@ update: UPDATE ID SET asignacion (COMMA asignacion)* (WHERE exp1)?;
 asignacion: ID EQ literal;
 cond: (expression relExp ( value | expression)) (exp cond)?;
 
-delete: DELETE FROM ID (WHERE exp)?;
+delete: DELETE FROM ID (WHERE exp1)?;
 
 query: SELECT (ASTERISK | column (COMMA column ) * ) FROM ID (COMMA ID)* (WHERE exp1)? (ORDER BY orderBy (COMMA orderBy)*)?;
 

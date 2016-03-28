@@ -1,4 +1,5 @@
-// Generated from C:\Users\juankboix1309\Documents\NetBeansProjects\Proyecto_SQL\CompiladorSQL\src\compiladorsql\Gramatica.g4 by ANTLR 4.2.2
+// Generated from C:\Users\Toshiba_U55\Desktop\UVG\S7\Bases de Datos\P1\Proyecto_SQL\CompiladorSQL\src\compiladorsql\Gramatica.g4 by ANTLR 4.4
+package compiladorsql;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class GramaticaParser extends Parser {
+	static { RuntimeMetaData.checkVersion("4.4", RuntimeMetaData.VERSION); }
+
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
@@ -72,17 +75,17 @@ public class GramaticaParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class SqlProgramContext extends ParserRuleContext {
-		public List<StatementContext> statement() {
-			return getRuleContexts(StatementContext.class);
-		}
-		public TerminalNode EOF() { return getToken(GramaticaParser.EOF, 0); }
-		public List<TerminalNode> DOTCOMMA() { return getTokens(GramaticaParser.DOTCOMMA); }
 		public TerminalNode DOTCOMMA(int i) {
 			return getToken(GramaticaParser.DOTCOMMA, i);
 		}
+		public TerminalNode EOF() { return getToken(GramaticaParser.EOF, 0); }
 		public StatementContext statement(int i) {
 			return getRuleContext(StatementContext.class,i);
 		}
+		public List<StatementContext> statement() {
+			return getRuleContexts(StatementContext.class);
+		}
+		public List<TerminalNode> DOTCOMMA() { return getTokens(GramaticaParser.DOTCOMMA); }
 		public SqlProgramContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -114,7 +117,7 @@ public class GramaticaParser extends Parser {
 			setState(85);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
-			while ( _alt!=2 && _alt!=ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -150,11 +153,11 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class StatementContext extends ParserRuleContext {
-		public TOperationContext tOperation() {
-			return getRuleContext(TOperationContext.class,0);
-		}
 		public DOperationContext dOperation() {
 			return getRuleContext(DOperationContext.class,0);
+		}
+		public TOperationContext tOperation() {
+			return getRuleContext(TOperationContext.class,0);
 		}
 		public DbOperationContext dbOperation() {
 			return getRuleContext(DbOperationContext.class,0);
@@ -190,14 +193,12 @@ public class GramaticaParser extends Parser {
 				setState(93); dbOperation();
 				}
 				break;
-
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(94); tOperation();
 				}
 				break;
-
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -218,19 +219,19 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class DbOperationContext extends ParserRuleContext {
-		public TerminalNode DATABASE() { return getToken(GramaticaParser.DATABASE, 0); }
-		public TerminalNode CREATE() { return getToken(GramaticaParser.CREATE, 0); }
-		public TerminalNode USE() { return getToken(GramaticaParser.USE, 0); }
-		public TerminalNode ALTER() { return getToken(GramaticaParser.ALTER, 0); }
-		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
-		public TerminalNode DATABASES() { return getToken(GramaticaParser.DATABASES, 0); }
 		public TerminalNode RENAME() { return getToken(GramaticaParser.RENAME, 0); }
-		public TerminalNode TO() { return getToken(GramaticaParser.TO, 0); }
-		public TerminalNode DROP() { return getToken(GramaticaParser.DROP, 0); }
+		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
 		public TerminalNode SHOW() { return getToken(GramaticaParser.SHOW, 0); }
+		public TerminalNode DATABASES() { return getToken(GramaticaParser.DATABASES, 0); }
+		public TerminalNode DATABASE() { return getToken(GramaticaParser.DATABASE, 0); }
+		public TerminalNode DROP() { return getToken(GramaticaParser.DROP, 0); }
 		public TerminalNode ID(int i) {
 			return getToken(GramaticaParser.ID, i);
 		}
+		public TerminalNode TO() { return getToken(GramaticaParser.TO, 0); }
+		public TerminalNode CREATE() { return getToken(GramaticaParser.CREATE, 0); }
+		public TerminalNode ALTER() { return getToken(GramaticaParser.ALTER, 0); }
+		public TerminalNode USE() { return getToken(GramaticaParser.USE, 0); }
 		public DbOperationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -314,17 +315,17 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class DOperationContext extends ParserRuleContext {
-		public UpdateContext update() {
-			return getRuleContext(UpdateContext.class,0);
+		public InsertContext insert() {
+			return getRuleContext(InsertContext.class,0);
 		}
 		public QueryContext query() {
 			return getRuleContext(QueryContext.class,0);
 		}
+		public UpdateContext update() {
+			return getRuleContext(UpdateContext.class,0);
+		}
 		public DeleteContext delete() {
 			return getRuleContext(DeleteContext.class,0);
-		}
-		public InsertContext insert() {
-			return getRuleContext(InsertContext.class,0);
 		}
 		public DOperationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -391,41 +392,41 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class TOperationContext extends ParserRuleContext {
-		public TerminalNode CREATE() { return getToken(GramaticaParser.CREATE, 0); }
-		public TerminalNode COLUMNS() { return getToken(GramaticaParser.COLUMNS, 0); }
-		public TableActionContext tableAction(int i) {
-			return getRuleContext(TableActionContext.class,i);
-		}
-		public TerminalNode ALTER() { return getToken(GramaticaParser.ALTER, 0); }
-		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
-		public ConstraintsContext constraints(int i) {
-			return getRuleContext(ConstraintsContext.class,i);
-		}
-		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
+		public TerminalNode SHOW() { return getToken(GramaticaParser.SHOW, 0); }
 		public TerminalNode LPARENT() { return getToken(GramaticaParser.LPARENT, 0); }
 		public TypeContext type(int i) {
 			return getRuleContext(TypeContext.class,i);
 		}
-		public TerminalNode TABLES() { return getToken(GramaticaParser.TABLES, 0); }
-		public TerminalNode DROP() { return getToken(GramaticaParser.DROP, 0); }
-		public TerminalNode SHOW() { return getToken(GramaticaParser.SHOW, 0); }
-		public TerminalNode COMMA(int i) {
-			return getToken(GramaticaParser.COMMA, i);
-		}
 		public List<TableActionContext> tableAction() {
 			return getRuleContexts(TableActionContext.class);
 		}
-		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
-		public List<ConstraintsContext> constraints() {
-			return getRuleContexts(ConstraintsContext.class);
+		public TerminalNode TABLES() { return getToken(GramaticaParser.TABLES, 0); }
+		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
+		public TerminalNode DROP() { return getToken(GramaticaParser.DROP, 0); }
+		public TerminalNode ID(int i) {
+			return getToken(GramaticaParser.ID, i);
 		}
+		public TerminalNode FROM() { return getToken(GramaticaParser.FROM, 0); }
+		public TerminalNode TABLE() { return getToken(GramaticaParser.TABLE, 0); }
+		public TerminalNode COMMA(int i) {
+			return getToken(GramaticaParser.COMMA, i);
+		}
+		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
+		public ConstraintsContext constraints(int i) {
+			return getRuleContext(ConstraintsContext.class,i);
+		}
+		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
+		public TerminalNode COLUMNS() { return getToken(GramaticaParser.COLUMNS, 0); }
 		public List<TypeContext> type() {
 			return getRuleContexts(TypeContext.class);
 		}
-		public TerminalNode TABLE() { return getToken(GramaticaParser.TABLE, 0); }
-		public TerminalNode FROM() { return getToken(GramaticaParser.FROM, 0); }
-		public TerminalNode ID(int i) {
-			return getToken(GramaticaParser.ID, i);
+		public TerminalNode CREATE() { return getToken(GramaticaParser.CREATE, 0); }
+		public TerminalNode ALTER() { return getToken(GramaticaParser.ALTER, 0); }
+		public List<ConstraintsContext> constraints() {
+			return getRuleContexts(ConstraintsContext.class);
+		}
+		public TableActionContext tableAction(int i) {
+			return getRuleContext(TableActionContext.class,i);
 		}
 		public TOperationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -493,7 +494,6 @@ public class GramaticaParser extends Parser {
 				setState(143); match(RPARENT);
 				}
 				break;
-
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -529,7 +529,6 @@ public class GramaticaParser extends Parser {
 				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << DROP) | (1L << RENAME) | (1L << ADD))) != 0) );
 				}
 				break;
-
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -538,7 +537,6 @@ public class GramaticaParser extends Parser {
 				setState(162); match(ID);
 				}
 				break;
-
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
@@ -546,7 +544,6 @@ public class GramaticaParser extends Parser {
 				setState(164); match(TABLES);
 				}
 				break;
-
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
@@ -570,19 +567,19 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class ConstraintsContext extends ParserRuleContext {
-		public ConstraintContext constraint(int i) {
-			return getRuleContext(ConstraintContext.class,i);
+		public TerminalNode CONSTRAINT(int i) {
+			return getToken(GramaticaParser.CONSTRAINT, i);
 		}
 		public List<ConstraintContext> constraint() {
 			return getRuleContexts(ConstraintContext.class);
 		}
 		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
 		public List<TerminalNode> CONSTRAINT() { return getTokens(GramaticaParser.CONSTRAINT); }
-		public TerminalNode CONSTRAINT(int i) {
-			return getToken(GramaticaParser.CONSTRAINT, i);
-		}
 		public TerminalNode COMMA(int i) {
 			return getToken(GramaticaParser.COMMA, i);
+		}
+		public ConstraintContext constraint(int i) {
+			return getRuleContext(ConstraintContext.class,i);
 		}
 		public ConstraintsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -616,7 +613,7 @@ public class GramaticaParser extends Parser {
 			setState(178);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
-			while ( _alt!=2 && _alt!=ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -645,22 +642,22 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class TableActionContext extends ParserRuleContext {
+		public TerminalNode RENAME() { return getToken(GramaticaParser.RENAME, 0); }
+		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
+		public TerminalNode COLUMN() { return getToken(GramaticaParser.COLUMN, 0); }
 		public ConstraintContext constraint() {
 			return getRuleContext(ConstraintContext.class,0);
 		}
-		public TerminalNode COLUMN() { return getToken(GramaticaParser.COLUMN, 0); }
-		public ConstraintsContext constraints() {
-			return getRuleContext(ConstraintsContext.class,0);
-		}
-		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
+		public TerminalNode ADD() { return getToken(GramaticaParser.ADD, 0); }
+		public TerminalNode CONSTRAINT() { return getToken(GramaticaParser.CONSTRAINT, 0); }
+		public TerminalNode DROP() { return getToken(GramaticaParser.DROP, 0); }
 		public TypeContext type() {
 			return getRuleContext(TypeContext.class,0);
 		}
-		public TerminalNode RENAME() { return getToken(GramaticaParser.RENAME, 0); }
-		public TerminalNode CONSTRAINT() { return getToken(GramaticaParser.CONSTRAINT, 0); }
 		public TerminalNode TO() { return getToken(GramaticaParser.TO, 0); }
-		public TerminalNode DROP() { return getToken(GramaticaParser.DROP, 0); }
-		public TerminalNode ADD() { return getToken(GramaticaParser.ADD, 0); }
+		public ConstraintsContext constraints() {
+			return getRuleContext(ConstraintsContext.class,0);
+		}
 		public TableActionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -714,7 +711,6 @@ public class GramaticaParser extends Parser {
 				}
 				}
 				break;
-
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -723,7 +719,6 @@ public class GramaticaParser extends Parser {
 				setState(191); constraint();
 				}
 				break;
-
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -732,7 +727,6 @@ public class GramaticaParser extends Parser {
 				setState(194); match(ID);
 				}
 				break;
-
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
@@ -741,7 +735,6 @@ public class GramaticaParser extends Parser {
 				setState(197); match(ID);
 				}
 				break;
-
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
@@ -764,13 +757,13 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class TypeContext extends ParserRuleContext {
-		public TerminalNode DATE() { return getToken(GramaticaParser.DATE, 0); }
-		public TerminalNode FLOAT() { return getToken(GramaticaParser.FLOAT, 0); }
-		public TerminalNode INT() { return getToken(GramaticaParser.INT, 0); }
-		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
 		public TerminalNode LPARENT() { return getToken(GramaticaParser.LPARENT, 0); }
-		public TerminalNode CHAR() { return getToken(GramaticaParser.CHAR, 0); }
 		public TerminalNode NUM() { return getToken(GramaticaParser.NUM, 0); }
+		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
+		public TerminalNode DATE() { return getToken(GramaticaParser.DATE, 0); }
+		public TerminalNode CHAR() { return getToken(GramaticaParser.CHAR, 0); }
+		public TerminalNode INT() { return getToken(GramaticaParser.INT, 0); }
+		public TerminalNode FLOAT() { return getToken(GramaticaParser.FLOAT, 0); }
 		public TypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -839,25 +832,25 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class ConstraintContext extends ParserRuleContext {
+		public TerminalNode PRIMARY() { return getToken(GramaticaParser.PRIMARY, 0); }
+		public TerminalNode KEY() { return getToken(GramaticaParser.KEY, 0); }
 		public TerminalNode CHECK() { return getToken(GramaticaParser.CHECK, 0); }
-		public Exp1Context exp1() {
-			return getRuleContext(Exp1Context.class,0);
-		}
-		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
-		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
 		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
 		public TerminalNode LPARENT() { return getToken(GramaticaParser.LPARENT, 0); }
-		public TerminalNode KEY() { return getToken(GramaticaParser.KEY, 0); }
-		public TerminalNode PRIMARY() { return getToken(GramaticaParser.PRIMARY, 0); }
+		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
 		public ReferencesContext references() {
 			return getRuleContext(ReferencesContext.class,0);
 		}
-		public TerminalNode FOREIGN() { return getToken(GramaticaParser.FOREIGN, 0); }
-		public TerminalNode COMMA(int i) {
-			return getToken(GramaticaParser.COMMA, i);
-		}
+		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
 		public TerminalNode ID(int i) {
 			return getToken(GramaticaParser.ID, i);
+		}
+		public TerminalNode FOREIGN() { return getToken(GramaticaParser.FOREIGN, 0); }
+		public Exp1Context exp1() {
+			return getRuleContext(Exp1Context.class,0);
+		}
+		public TerminalNode COMMA(int i) {
+			return getToken(GramaticaParser.COMMA, i);
 		}
 		public ConstraintContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -922,7 +915,6 @@ public class GramaticaParser extends Parser {
 				setState(229); match(RPARENT);
 				}
 				break;
-
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -961,7 +953,6 @@ public class GramaticaParser extends Parser {
 				setState(248); references();
 				}
 				break;
-
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -986,17 +977,17 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class ReferencesContext extends ParserRuleContext {
-		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
-		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
 		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
 		public TerminalNode LPARENT() { return getToken(GramaticaParser.LPARENT, 0); }
-		public TerminalNode COMMA(int i) {
-			return getToken(GramaticaParser.COMMA, i);
-		}
+		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
+		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
+		public TerminalNode REFERENCES() { return getToken(GramaticaParser.REFERENCES, 0); }
 		public TerminalNode ID(int i) {
 			return getToken(GramaticaParser.ID, i);
 		}
-		public TerminalNode REFERENCES() { return getToken(GramaticaParser.REFERENCES, 0); }
+		public TerminalNode COMMA(int i) {
+			return getToken(GramaticaParser.COMMA, i);
+		}
 		public ReferencesContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1118,11 +1109,11 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class Exp2Context extends ParserRuleContext {
-		public Exp3Context exp3() {
-			return getRuleContext(Exp3Context.class,0);
-		}
 		public Exp2Context exp2() {
 			return getRuleContext(Exp2Context.class,0);
+		}
+		public Exp3Context exp3() {
+			return getRuleContext(Exp3Context.class,0);
 		}
 		public AndExpContext andExp() {
 			return getRuleContext(AndExpContext.class,0);
@@ -1168,7 +1159,7 @@ public class GramaticaParser extends Parser {
 			setState(284);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,22,_ctx);
-			while ( _alt!=2 && _alt!=ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1201,11 +1192,11 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class Exp3Context extends ParserRuleContext {
-		public Exp3Context exp3() {
-			return getRuleContext(Exp3Context.class,0);
-		}
 		public Exp4Context exp4() {
 			return getRuleContext(Exp4Context.class,0);
+		}
+		public Exp3Context exp3() {
+			return getRuleContext(Exp3Context.class,0);
 		}
 		public OrExpContext orExp() {
 			return getRuleContext(OrExpContext.class,0);
@@ -1251,7 +1242,7 @@ public class GramaticaParser extends Parser {
 			setState(296);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,23,_ctx);
-			while ( _alt!=2 && _alt!=ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1284,14 +1275,14 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class Exp4Context extends ParserRuleContext {
+		public Exp4Context exp4() {
+			return getRuleContext(Exp4Context.class,0);
+		}
 		public EqExpContext eqExp() {
 			return getRuleContext(EqExpContext.class,0);
 		}
 		public Exp5Context exp5() {
 			return getRuleContext(Exp5Context.class,0);
-		}
-		public Exp4Context exp4() {
-			return getRuleContext(Exp4Context.class,0);
 		}
 		public Exp4Context(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1334,7 +1325,7 @@ public class GramaticaParser extends Parser {
 			setState(308);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,24,_ctx);
-			while ( _alt!=2 && _alt!=ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1417,7 +1408,7 @@ public class GramaticaParser extends Parser {
 			setState(320);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,25,_ctx);
-			while ( _alt!=2 && _alt!=ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1514,18 +1505,18 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class FactorContext extends ParserRuleContext {
-		public TerminalNode DOT() { return getToken(GramaticaParser.DOT, 0); }
-		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
-		public Exp1Context exp1() {
-			return getRuleContext(Exp1Context.class,0);
-		}
 		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
+		public TerminalNode DOT() { return getToken(GramaticaParser.DOT, 0); }
 		public TerminalNode LPARENT() { return getToken(GramaticaParser.LPARENT, 0); }
 		public LiteralContext literal() {
 			return getRuleContext(LiteralContext.class,0);
 		}
+		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
 		public TerminalNode ID(int i) {
 			return getToken(GramaticaParser.ID, i);
+		}
+		public Exp1Context exp1() {
+			return getRuleContext(Exp1Context.class,0);
 		}
 		public FactorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1644,14 +1635,14 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class ExpContext extends ParserRuleContext {
-		public NotExpContext notExp() {
-			return getRuleContext(NotExpContext.class,0);
-		}
 		public OrExpContext orExp() {
 			return getRuleContext(OrExpContext.class,0);
 		}
 		public AndExpContext andExp() {
 			return getRuleContext(AndExpContext.class,0);
+		}
+		public NotExpContext notExp() {
+			return getRuleContext(NotExpContext.class,0);
 		}
 		public ExpContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1835,8 +1826,8 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class EqExpContext extends ParserRuleContext {
-		public TerminalNode NOTEQ() { return getToken(GramaticaParser.NOTEQ, 0); }
 		public TerminalNode EQ() { return getToken(GramaticaParser.EQ, 0); }
+		public TerminalNode NOTEQ() { return getToken(GramaticaParser.NOTEQ, 0); }
 		public EqExpContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1885,8 +1876,8 @@ public class GramaticaParser extends Parser {
 	public static class GlExpContext extends ParserRuleContext {
 		public TerminalNode EQGTHAN() { return getToken(GramaticaParser.EQGTHAN, 0); }
 		public TerminalNode LTHAN() { return getToken(GramaticaParser.LTHAN, 0); }
-		public TerminalNode GTHAN() { return getToken(GramaticaParser.GTHAN, 0); }
 		public TerminalNode EQLTHAN() { return getToken(GramaticaParser.EQLTHAN, 0); }
+		public TerminalNode GTHAN() { return getToken(GramaticaParser.GTHAN, 0); }
 		public GlExpContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1996,31 +1987,31 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class InsertContext extends ParserRuleContext {
-		public ValueContext value(int i) {
-			return getRuleContext(ValueContext.class,i);
-		}
+		public List<TerminalNode> LPARENT() { return getTokens(GramaticaParser.LPARENT); }
 		public List<ValueContext> value() {
 			return getRuleContexts(ValueContext.class);
 		}
-		public TerminalNode RPARENT(int i) {
-			return getToken(GramaticaParser.RPARENT, i);
-		}
-		public List<TerminalNode> RPARENT() { return getTokens(GramaticaParser.RPARENT); }
-		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
-		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
-		public TerminalNode INTO() { return getToken(GramaticaParser.INTO, 0); }
-		public List<TerminalNode> LPARENT() { return getTokens(GramaticaParser.LPARENT); }
-		public TerminalNode INSERT() { return getToken(GramaticaParser.INSERT, 0); }
-		public TerminalNode LPARENT(int i) {
-			return getToken(GramaticaParser.LPARENT, i);
-		}
 		public TerminalNode VALUES() { return getToken(GramaticaParser.VALUES, 0); }
-		public TerminalNode COMMA(int i) {
-			return getToken(GramaticaParser.COMMA, i);
-		}
+		public List<TerminalNode> RPARENT() { return getTokens(GramaticaParser.RPARENT); }
 		public TerminalNode ID(int i) {
 			return getToken(GramaticaParser.ID, i);
 		}
+		public TerminalNode COMMA(int i) {
+			return getToken(GramaticaParser.COMMA, i);
+		}
+		public TerminalNode INTO() { return getToken(GramaticaParser.INTO, 0); }
+		public TerminalNode RPARENT(int i) {
+			return getToken(GramaticaParser.RPARENT, i);
+		}
+		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
+		public ValueContext value(int i) {
+			return getRuleContext(ValueContext.class,i);
+		}
+		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
+		public TerminalNode LPARENT(int i) {
+			return getToken(GramaticaParser.LPARENT, i);
+		}
+		public TerminalNode INSERT() { return getToken(GramaticaParser.INSERT, 0); }
 		public InsertContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2130,20 +2121,20 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class ValueContext extends ParserRuleContext {
-		public EnteroContext entero() {
-			return getRuleContext(EnteroContext.class,0);
-		}
 		public NulloContext nullo() {
 			return getRuleContext(NulloContext.class,0);
+		}
+		public FechaContext fecha() {
+			return getRuleContext(FechaContext.class,0);
 		}
 		public DecimalContext decimal() {
 			return getRuleContext(DecimalContext.class,0);
 		}
+		public EnteroContext entero() {
+			return getRuleContext(EnteroContext.class,0);
+		}
 		public CharacterContext character() {
 			return getRuleContext(CharacterContext.class,0);
-		}
-		public FechaContext fecha() {
-			return getRuleContext(FechaContext.class,0);
 		}
 		public ValueContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2176,28 +2167,24 @@ public class GramaticaParser extends Parser {
 				setState(398); entero();
 				}
 				break;
-
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(399); decimal();
 				}
 				break;
-
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(400); fecha();
 				}
 				break;
-
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(401); character();
 				}
 				break;
-
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
@@ -2259,8 +2246,8 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class EnteroContext extends ParserRuleContext {
-		public TerminalNode MINUS() { return getToken(GramaticaParser.MINUS, 0); }
 		public TerminalNode NUM() { return getToken(GramaticaParser.NUM, 0); }
+		public TerminalNode MINUS() { return getToken(GramaticaParser.MINUS, 0); }
 		public EnteroContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2310,11 +2297,11 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class DecimalContext extends ParserRuleContext {
+		public TerminalNode DOT() { return getToken(GramaticaParser.DOT, 0); }
+		public TerminalNode NUM() { return getToken(GramaticaParser.NUM, 0); }
 		public EnteroContext entero() {
 			return getRuleContext(EnteroContext.class,0);
 		}
-		public TerminalNode DOT() { return getToken(GramaticaParser.DOT, 0); }
-		public TerminalNode NUM() { return getToken(GramaticaParser.NUM, 0); }
 		public DecimalContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2439,22 +2426,22 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class UpdateContext extends ParserRuleContext {
-		public TerminalNode WHERE() { return getToken(GramaticaParser.WHERE, 0); }
-		public TerminalNode SET() { return getToken(GramaticaParser.SET, 0); }
-		public AsignacionContext asignacion(int i) {
-			return getRuleContext(AsignacionContext.class,i);
-		}
-		public Exp1Context exp1() {
-			return getRuleContext(Exp1Context.class,0);
-		}
+		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
+		public TerminalNode UPDATE() { return getToken(GramaticaParser.UPDATE, 0); }
+		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
 		public List<AsignacionContext> asignacion() {
 			return getRuleContexts(AsignacionContext.class);
 		}
-		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
-		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
-		public TerminalNode UPDATE() { return getToken(GramaticaParser.UPDATE, 0); }
+		public TerminalNode WHERE() { return getToken(GramaticaParser.WHERE, 0); }
+		public Exp1Context exp1() {
+			return getRuleContext(Exp1Context.class,0);
+		}
+		public TerminalNode SET() { return getToken(GramaticaParser.SET, 0); }
 		public TerminalNode COMMA(int i) {
 			return getToken(GramaticaParser.COMMA, i);
+		}
+		public AsignacionContext asignacion(int i) {
+			return getRuleContext(AsignacionContext.class,i);
 		}
 		public UpdateContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2570,23 +2557,23 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class CondContext extends ParserRuleContext {
-		public ExpressionContext expression(int i) {
-			return getRuleContext(ExpressionContext.class,i);
+		public ExpContext exp() {
+			return getRuleContext(ExpContext.class,0);
 		}
 		public ValueContext value() {
 			return getRuleContext(ValueContext.class,0);
 		}
-		public ExpContext exp() {
-			return getRuleContext(ExpContext.class,0);
-		}
 		public RelExpContext relExp() {
 			return getRuleContext(RelExpContext.class,0);
 		}
-		public List<ExpressionContext> expression() {
-			return getRuleContexts(ExpressionContext.class);
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
 		}
 		public CondContext cond() {
 			return getRuleContext(CondContext.class,0);
+		}
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
 		}
 		public CondContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2659,13 +2646,13 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class DeleteContext extends ParserRuleContext {
-		public TerminalNode WHERE() { return getToken(GramaticaParser.WHERE, 0); }
-		public ExpContext exp() {
-			return getRuleContext(ExpContext.class,0);
-		}
 		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
 		public TerminalNode DELETE() { return getToken(GramaticaParser.DELETE, 0); }
+		public TerminalNode WHERE() { return getToken(GramaticaParser.WHERE, 0); }
 		public TerminalNode FROM() { return getToken(GramaticaParser.FROM, 0); }
+		public Exp1Context exp1() {
+			return getRuleContext(Exp1Context.class,0);
+		}
 		public DeleteContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2700,7 +2687,7 @@ public class GramaticaParser extends Parser {
 			if (_la==WHERE) {
 				{
 				setState(453); match(WHERE);
-				setState(454); exp();
+				setState(454); exp1();
 				}
 			}
 
@@ -2718,34 +2705,34 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class QueryContext extends ParserRuleContext {
-		public List<OrderByContext> orderBy() {
-			return getRuleContexts(OrderByContext.class);
+		public List<ColumnContext> column() {
+			return getRuleContexts(ColumnContext.class);
 		}
-		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
-		public ColumnContext column(int i) {
-			return getRuleContext(ColumnContext.class,i);
+		public TerminalNode FROM() { return getToken(GramaticaParser.FROM, 0); }
+		public TerminalNode ID(int i) {
+			return getToken(GramaticaParser.ID, i);
 		}
-		public TerminalNode SELECT() { return getToken(GramaticaParser.SELECT, 0); }
 		public OrderByContext orderBy(int i) {
 			return getRuleContext(OrderByContext.class,i);
 		}
 		public TerminalNode COMMA(int i) {
 			return getToken(GramaticaParser.COMMA, i);
 		}
-		public List<ColumnContext> column() {
-			return getRuleContexts(ColumnContext.class);
-		}
-		public TerminalNode WHERE() { return getToken(GramaticaParser.WHERE, 0); }
 		public TerminalNode ASTERISK() { return getToken(GramaticaParser.ASTERISK, 0); }
+		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
+		public List<OrderByContext> orderBy() {
+			return getRuleContexts(OrderByContext.class);
+		}
+		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
+		public TerminalNode ORDER() { return getToken(GramaticaParser.ORDER, 0); }
+		public TerminalNode WHERE() { return getToken(GramaticaParser.WHERE, 0); }
+		public TerminalNode SELECT() { return getToken(GramaticaParser.SELECT, 0); }
 		public Exp1Context exp1() {
 			return getRuleContext(Exp1Context.class,0);
 		}
-		public TerminalNode ORDER() { return getToken(GramaticaParser.ORDER, 0); }
 		public TerminalNode BY() { return getToken(GramaticaParser.BY, 0); }
-		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
-		public TerminalNode FROM() { return getToken(GramaticaParser.FROM, 0); }
-		public TerminalNode ID(int i) {
-			return getToken(GramaticaParser.ID, i);
+		public ColumnContext column(int i) {
+			return getRuleContext(ColumnContext.class,i);
 		}
 		public QueryContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2866,8 +2853,8 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class ColumnContext extends ParserRuleContext {
-		public TerminalNode DOT() { return getToken(GramaticaParser.DOT, 0); }
 		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
+		public TerminalNode DOT() { return getToken(GramaticaParser.DOT, 0); }
 		public TerminalNode ID(int i) {
 			return getToken(GramaticaParser.ID, i);
 		}
@@ -2921,8 +2908,8 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class OrderByContext extends ParserRuleContext {
-		public TerminalNode DESC() { return getToken(GramaticaParser.DESC, 0); }
 		public TerminalNode ASC() { return getToken(GramaticaParser.ASC, 0); }
+		public TerminalNode DESC() { return getToken(GramaticaParser.DESC, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
@@ -2980,8 +2967,8 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class ExpressionContext extends ParserRuleContext {
-		public TerminalNode DOT() { return getToken(GramaticaParser.DOT, 0); }
 		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
+		public TerminalNode DOT() { return getToken(GramaticaParser.DOT, 0); }
 		public TerminalNode ID(int i) {
 			return getToken(GramaticaParser.ID, i);
 		}
@@ -3037,11 +3024,8 @@ public class GramaticaParser extends Parser {
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
 		case 11: return exp2_sempred((Exp2Context)_localctx, predIndex);
-
 		case 12: return exp3_sempred((Exp3Context)_localctx, predIndex);
-
 		case 13: return exp4_sempred((Exp4Context)_localctx, predIndex);
-
 		case 14: return exp5_sempred((Exp5Context)_localctx, predIndex);
 		}
 		return true;
@@ -3235,7 +3219,7 @@ public class GramaticaParser extends Parser {
 		"\u01bc\3\2\2\2\u01be\u01c2\3\2\2\2\u01bf\u01c0\5&\24\2\u01c0\u01c1\5F"+
 		"$\2\u01c1\u01c3\3\2\2\2\u01c2\u01bf\3\2\2\2\u01c2\u01c3\3\2\2\2\u01c3"+
 		"G\3\2\2\2\u01c4\u01c5\7+\2\2\u01c5\u01c6\7\21\2\2\u01c6\u01c9\7.\2\2\u01c7"+
-		"\u01c8\7\24\2\2\u01c8\u01ca\5&\24\2\u01c9\u01c7\3\2\2\2\u01c9\u01ca\3"+
+		"\u01c8\7\24\2\2\u01c8\u01ca\5\26\f\2\u01c9\u01c7\3\2\2\2\u01c9\u01ca\3"+
 		"\2\2\2\u01caI\3\2\2\2\u01cb\u01d5\7\23\2\2\u01cc\u01d6\7>\2\2\u01cd\u01d2"+
 		"\5L\'\2\u01ce\u01cf\7\65\2\2\u01cf\u01d1\5L\'\2\u01d0\u01ce\3\2\2\2\u01d1"+
 		"\u01d4\3\2\2\2\u01d2\u01d0\3\2\2\2\u01d2\u01d3\3\2\2\2\u01d3\u01d6\3\2"+

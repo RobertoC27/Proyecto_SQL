@@ -105,9 +105,6 @@ public class Menu extends javax.swing.JFrame {
     final AttributeSet attrBlue = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE);
     final AttributeSet attrBlack = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
     public Menu() {
-        
-        
-        
         initComponents();
     }
 
