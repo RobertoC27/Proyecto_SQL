@@ -5,6 +5,100 @@
  */
 grammar Gramatica;
 
+
+//prods
+sqlProgram : statement (DOTCOMMA statement)* (DOTCOMMA)? EOF;
+
+statement: dbOperation | tOperation | dOperation;
+
+dbOperation: CREATE DATABASE ID 
+| DROP DATABASE ID 
+| USE DATABASE ID 
+| SHOW DATABASES 
+| ALTER DATABASE ID RENAME TO ID;
+
+dOperation: insert 
+| update
+| delete 
+| query;
+
+tOperation: CREATE TABLE ID LPARENT ID type (COMMA ID type)* (constraints)* RPARENT
+| ALTER TABLE ID (tableAction (COMMA tableAction)*)+
+| DROP TABLE ID
+| SHOW TABLES
+| SHOW COLUMNS FROM ID;
+
+constraints: (CONSTRAINT constraint (COMMA CONSTRAINT constraint)*);
+
+tableAction: ADD COLUMN ID type (constraints | )
+| ADD CONSTRAINT constraint
+| DROP COLUMN ID
+| DROP CONSTRAINT ID
+| RENAME TO ID
+;
+
+type: INT | FLOAT | DATE | CHAR LPARENT NUM RPARENT;
+
+constraint: ID PRIMARY KEY LPARENT (ID(COMMA ID)*)* RPARENT
+| ID FOREIGN KEY  LPARENT (ID (COMMA ID)*)* RPARENT references
+| ID CHECK (exp1)
+;
+
+references: REFERENCES ID (LPARENT (ID(COMMA ID)*)* RPARENT)?;
+
+exp1: exp2;
+
+exp2: exp2 andExp exp3 | exp3;
+
+exp3: exp3 orExp exp4 | exp4;
+
+exp4: exp4 eqExp exp5 | exp5;
+
+exp5: exp5 glExp unarianFactorExp | unarianFactorExp;
+
+unarianFactorExp: NOT factor | factor;
+
+factor: literal
+| LPARENT exp1 RPARENT
+| ID(DOT ID)?;
+
+literal: value;
+
+exp: andExp | orExp | notExp;
+
+notExp: NOT;
+orExp: OR;
+andExp: AND;
+eqExp: EQ | NOTEQ;
+glExp: LTHAN | EQLTHAN | GTHAN | EQGTHAN;
+
+relExp: eqExp | glExp;
+
+insert: INSERT INTO ID (LPARENT(ID(COMMA ID)*)*RPARENT)? VALUES LPARENT (value (COMMA value)*)* RPARENT;
+
+value: entero | decimal | fecha | character | nullo;
+nullo: NULO;
+entero:(MINUS)? NUM;
+decimal: entero DOT NUM;
+fecha: NUM_DATE;
+character: CHARACTER;
+
+update: UPDATE ID SET asignacion (COMMA asignacion)* (WHERE exp1)?;
+
+asignacion: ID EQ literal;
+cond: (expression relExp ( value | expression)) (exp cond)?;
+
+delete: DELETE FROM ID (WHERE exp1)?;
+
+query: SELECT (ASTERISK | column (COMMA column ) * ) FROM ID (COMMA ID)* (WHERE exp1)? (ORDER BY orderBy (COMMA orderBy)*)?;
+
+column: ID(DOT ID)?;
+
+orderBy: expression (ASC | DESC)?;
+
+expression: ID(DOT ID)?;
+
+
 //Keywords
 CREATE:	C R E A T E;
 DATABASE: D A T A B A S E;
@@ -87,7 +181,11 @@ NUM: DIGIT(DIGIT)* ;
 fragment LETTER: ( 'a'..'z' | 'A'..'Z') ;
 fragment DIGIT: '0'..'9' ;
 
-NUM_DATE:  '\'' DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '\'';
+NUM_YEAR:DIGIT DIGIT DIGIT DIGIT ;
+NUM_MONTH:DIGIT DIGIT ;
+NUM_DAY:DIGIT DIGIT ;
+
+NUM_DATE:  '\'' DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT'-' DIGIT DIGIT'\'' ;
 CHARACTER: '\''~('\r'|'\n'|'\'')* '\'';
 DOTCOMMA: ';';
 LPARENT: '(';
@@ -102,95 +200,3 @@ GTHAN: '>';
 EQGTHAN: '>=';
 MINUS: '-';
 ASTERISK: '*';
-//prods
-sqlProgram : statement (DOTCOMMA statement)* (DOTCOMMA)? EOF;
-
-statement: dbOperation | tOperation | dOperation;
-
-dbOperation: CREATE DATABASE ID 
-| DROP DATABASE ID 
-| USE DATABASE ID 
-| SHOW DATABASES 
-| ALTER DATABASE ID RENAME TO ID;
-
-dOperation: insert 
-| update
-| delete 
-| query;
-
-tOperation: CREATE TABLE ID LPARENT ID type (COMMA ID type)* (constraints)* RPARENT
-| ALTER TABLE ID (tableAction (COMMA tableAction)*)+
-| DROP TABLE ID
-| SHOW TABLES
-| SHOW COLUMNS FROM ID;
-
-constraints: (CONSTRAINT constraint (COMMA CONSTRAINT constraint)*);
-
-tableAction: ADD COLUMN ID type (constraints | )
-| ADD CONSTRAINT constraint
-| DROP COLUMN ID
-| DROP CONSTRAINT ID
-| RENAME TO ID
-;
-
-type: INT | FLOAT | DATE | CHAR LPARENT NUM RPARENT;
-
-constraint: ID PRIMARY KEY LPARENT (ID(COMMA ID)*)* RPARENT
-| ID FOREIGN KEY  LPARENT (ID (COMMA ID)*)* RPARENT references
-| ID CHECK (exp1)
-;
-
-references: REFERENCES ID (LPARENT (ID(COMMA ID)*)* RPARENT)?;
-
-exp1: exp2;
-
-exp2: exp2 andExp exp3 | exp3;
-
-exp3: exp3 orExp exp4 | exp4;
-
-exp4: exp4 eqExp exp5 | exp5;
-
-exp5: exp5 glExp unarianFactorExp | unarianFactorExp;
-
-unarianFactorExp: NOT factor | factor;
-
-factor: literal
-| LPARENT exp1 RPARENT
-| ID(DOT ID)?;
-
-literal: value;
-
-exp: andExp | orExp | notExp;
-
-notExp: NOT;
-orExp: OR;
-andExp: AND;
-eqExp: EQ | NOTEQ;
-glExp: LTHAN | EQLTHAN | GTHAN | EQGTHAN;
-
-relExp: eqExp | glExp;
-
-insert: INSERT INTO ID (LPARENT(ID(COMMA ID)*)*RPARENT)? VALUES LPARENT (value (COMMA value)*)* RPARENT;
-
-value: entero | decimal | fecha | character | nullo;
-nullo: NULO;
-entero:(MINUS)? NUM;
-decimal: entero DOT NUM;
-fecha: DATE;
-character: CHAR;
-
-update: UPDATE ID SET asignacion (COMMA asignacion)* (WHERE exp1)?;
-
-asignacion: ID EQ literal;
-cond: (expression relExp ( value | expression)) (exp cond)?;
-
-delete: DELETE FROM ID (WHERE exp1)?;
-
-query: SELECT (ASTERISK | column (COMMA column ) * ) FROM ID (COMMA ID)* (WHERE exp1)? (ORDER BY orderBy (COMMA orderBy)*)?;
-
-column: ID(DOT ID)?;
-
-orderBy: expression (ASC | DESC)?;
-
-expression: ID(DOT ID)?;
-
