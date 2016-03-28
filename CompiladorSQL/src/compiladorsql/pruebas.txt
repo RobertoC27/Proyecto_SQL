@@ -9,3 +9,5 @@ show tables;
 CREATE DATABASE tienda;
 USE DATABASE tienda;
 CREATE TABLE cliente (id int, jtg int, ljro float, oajieo char(2) CONSTRAINT pkCliente PRIMARY KEY  (id));
+
+create table bmw (tipo int, algo int constraint check1 check ((5<4) and (5>4)));
