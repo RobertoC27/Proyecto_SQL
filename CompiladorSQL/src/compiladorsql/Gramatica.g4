@@ -11,26 +11,28 @@ sqlProgram : statement (DOTCOMMA statement)* (DOTCOMMA)? EOF;
 
 statement: dbOperation | tOperation | dOperation;
 
-dbOperation: CREATE DATABASE ID 
-| DROP DATABASE ID 
-| USE DATABASE ID 
-| SHOW DATABASES 
-| ALTER DATABASE ID RENAME TO ID;
+dbOperation: CREATE DATABASE ID #crearDB
+| DROP DATABASE ID #eliminarDB
+| USE DATABASE ID #usarDB
+| SHOW DATABASES #mostrarDB
+| ALTER DATABASE ID RENAME TO ID #alterarDB
+;
 
 dOperation: insert 
 | update
 | delete 
 | query;
 
-tOperation: CREATE TABLE ID LPARENT ID type (COMMA ID type)* (constraints)* RPARENT
-| ALTER TABLE ID (tableAction (COMMA tableAction)*)+
-| DROP TABLE ID
-| SHOW TABLES
-| SHOW COLUMNS FROM ID;
+tOperation: CREATE TABLE ID LPARENT ID type (COMMA ID type)* (constraints)* RPARENT #crearTB
+| ALTER TABLE ID (tableAction (COMMA tableAction)*)+ #alterarTB
+| DROP TABLE ID #eliminarTB
+| SHOW TABLES #mostrarTablasTB
+| SHOW COLUMNS FROM ID #mostrarColumnasTB
+;
 
 constraints: (CONSTRAINT constraint (COMMA CONSTRAINT constraint)*);
 
-tableAction: ADD COLUMN ID type (constraints | )
+tableAction: ADD COLUMN ID type (constraints | ) 
 | ADD CONSTRAINT constraint
 | DROP COLUMN ID
 | DROP CONSTRAINT ID

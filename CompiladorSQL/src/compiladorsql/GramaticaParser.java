@@ -220,34 +220,112 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class DbOperationContext extends ParserRuleContext {
-		public TerminalNode RENAME() { return getToken(GramaticaParser.RENAME, 0); }
-		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
-		public TerminalNode SHOW() { return getToken(GramaticaParser.SHOW, 0); }
-		public TerminalNode DATABASES() { return getToken(GramaticaParser.DATABASES, 0); }
-		public TerminalNode DATABASE() { return getToken(GramaticaParser.DATABASE, 0); }
-		public TerminalNode DROP() { return getToken(GramaticaParser.DROP, 0); }
-		public TerminalNode ID(int i) {
-			return getToken(GramaticaParser.ID, i);
-		}
-		public TerminalNode TO() { return getToken(GramaticaParser.TO, 0); }
-		public TerminalNode CREATE() { return getToken(GramaticaParser.CREATE, 0); }
-		public TerminalNode ALTER() { return getToken(GramaticaParser.ALTER, 0); }
-		public TerminalNode USE() { return getToken(GramaticaParser.USE, 0); }
 		public DbOperationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_dbOperation; }
+	 
+		public DbOperationContext() { }
+		public void copyFrom(DbOperationContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class UsarDBContext extends DbOperationContext {
+		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
+		public TerminalNode DATABASE() { return getToken(GramaticaParser.DATABASE, 0); }
+		public TerminalNode USE() { return getToken(GramaticaParser.USE, 0); }
+		public UsarDBContext(DbOperationContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterDbOperation(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterUsarDB(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitDbOperation(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitUsarDB(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitDbOperation(this);
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitUsarDB(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class MostrarDBContext extends DbOperationContext {
+		public TerminalNode SHOW() { return getToken(GramaticaParser.SHOW, 0); }
+		public TerminalNode DATABASES() { return getToken(GramaticaParser.DATABASES, 0); }
+		public MostrarDBContext(DbOperationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterMostrarDB(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitMostrarDB(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitMostrarDB(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class AlterarDBContext extends DbOperationContext {
+		public TerminalNode RENAME() { return getToken(GramaticaParser.RENAME, 0); }
+		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
+		public TerminalNode DATABASE() { return getToken(GramaticaParser.DATABASE, 0); }
+		public TerminalNode ID(int i) {
+			return getToken(GramaticaParser.ID, i);
+		}
+		public TerminalNode TO() { return getToken(GramaticaParser.TO, 0); }
+		public TerminalNode ALTER() { return getToken(GramaticaParser.ALTER, 0); }
+		public AlterarDBContext(DbOperationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterAlterarDB(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitAlterarDB(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitAlterarDB(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class CrearDBContext extends DbOperationContext {
+		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
+		public TerminalNode DATABASE() { return getToken(GramaticaParser.DATABASE, 0); }
+		public TerminalNode CREATE() { return getToken(GramaticaParser.CREATE, 0); }
+		public CrearDBContext(DbOperationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterCrearDB(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitCrearDB(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitCrearDB(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class EliminarDBContext extends DbOperationContext {
+		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
+		public TerminalNode DATABASE() { return getToken(GramaticaParser.DATABASE, 0); }
+		public TerminalNode DROP() { return getToken(GramaticaParser.DROP, 0); }
+		public EliminarDBContext(DbOperationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterEliminarDB(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitEliminarDB(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitEliminarDB(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -259,6 +337,7 @@ public class GramaticaParser extends Parser {
 			setState(115);
 			switch (_input.LA(1)) {
 			case CREATE:
+				_localctx = new CrearDBContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(98); match(CREATE);
@@ -267,6 +346,7 @@ public class GramaticaParser extends Parser {
 				}
 				break;
 			case DROP:
+				_localctx = new EliminarDBContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(101); match(DROP);
@@ -275,6 +355,7 @@ public class GramaticaParser extends Parser {
 				}
 				break;
 			case USE:
+				_localctx = new UsarDBContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(104); match(USE);
@@ -283,6 +364,7 @@ public class GramaticaParser extends Parser {
 				}
 				break;
 			case SHOW:
+				_localctx = new MostrarDBContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(107); match(SHOW);
@@ -290,6 +372,7 @@ public class GramaticaParser extends Parser {
 				}
 				break;
 			case ALTER:
+				_localctx = new AlterarDBContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(109); match(ALTER);
@@ -393,57 +476,139 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static class TOperationContext extends ParserRuleContext {
-		public TerminalNode SHOW() { return getToken(GramaticaParser.SHOW, 0); }
-		public TerminalNode LPARENT() { return getToken(GramaticaParser.LPARENT, 0); }
-		public TypeContext type(int i) {
-			return getRuleContext(TypeContext.class,i);
-		}
-		public List<TableActionContext> tableAction() {
-			return getRuleContexts(TableActionContext.class);
-		}
-		public TerminalNode TABLES() { return getToken(GramaticaParser.TABLES, 0); }
-		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
-		public TerminalNode DROP() { return getToken(GramaticaParser.DROP, 0); }
-		public TerminalNode ID(int i) {
-			return getToken(GramaticaParser.ID, i);
-		}
-		public TerminalNode FROM() { return getToken(GramaticaParser.FROM, 0); }
-		public TerminalNode TABLE() { return getToken(GramaticaParser.TABLE, 0); }
-		public TerminalNode COMMA(int i) {
-			return getToken(GramaticaParser.COMMA, i);
-		}
-		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
-		public ConstraintsContext constraints(int i) {
-			return getRuleContext(ConstraintsContext.class,i);
-		}
-		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
-		public TerminalNode COLUMNS() { return getToken(GramaticaParser.COLUMNS, 0); }
-		public List<TypeContext> type() {
-			return getRuleContexts(TypeContext.class);
-		}
-		public TerminalNode CREATE() { return getToken(GramaticaParser.CREATE, 0); }
-		public TerminalNode ALTER() { return getToken(GramaticaParser.ALTER, 0); }
-		public List<ConstraintsContext> constraints() {
-			return getRuleContexts(ConstraintsContext.class);
-		}
-		public TableActionContext tableAction(int i) {
-			return getRuleContext(TableActionContext.class,i);
-		}
 		public TOperationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_tOperation; }
+	 
+		public TOperationContext() { }
+		public void copyFrom(TOperationContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class MostrarTablasTBContext extends TOperationContext {
+		public TerminalNode SHOW() { return getToken(GramaticaParser.SHOW, 0); }
+		public TerminalNode TABLES() { return getToken(GramaticaParser.TABLES, 0); }
+		public MostrarTablasTBContext(TOperationContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterTOperation(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterMostrarTablasTB(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitTOperation(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitMostrarTablasTB(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitTOperation(this);
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitMostrarTablasTB(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class AlterarTBContext extends TOperationContext {
+		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
+		public List<TableActionContext> tableAction() {
+			return getRuleContexts(TableActionContext.class);
+		}
+		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
+		public TerminalNode ALTER() { return getToken(GramaticaParser.ALTER, 0); }
+		public TableActionContext tableAction(int i) {
+			return getRuleContext(TableActionContext.class,i);
+		}
+		public TerminalNode TABLE() { return getToken(GramaticaParser.TABLE, 0); }
+		public TerminalNode COMMA(int i) {
+			return getToken(GramaticaParser.COMMA, i);
+		}
+		public AlterarTBContext(TOperationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterAlterarTB(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitAlterarTB(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitAlterarTB(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class CrearTBContext extends TOperationContext {
+		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
+		public ConstraintsContext constraints(int i) {
+			return getRuleContext(ConstraintsContext.class,i);
+		}
+		public TerminalNode LPARENT() { return getToken(GramaticaParser.LPARENT, 0); }
+		public TypeContext type(int i) {
+			return getRuleContext(TypeContext.class,i);
+		}
+		public List<TerminalNode> COMMA() { return getTokens(GramaticaParser.COMMA); }
+		public TerminalNode RPARENT() { return getToken(GramaticaParser.RPARENT, 0); }
+		public TerminalNode ID(int i) {
+			return getToken(GramaticaParser.ID, i);
+		}
+		public List<TypeContext> type() {
+			return getRuleContexts(TypeContext.class);
+		}
+		public TerminalNode CREATE() { return getToken(GramaticaParser.CREATE, 0); }
+		public List<ConstraintsContext> constraints() {
+			return getRuleContexts(ConstraintsContext.class);
+		}
+		public TerminalNode TABLE() { return getToken(GramaticaParser.TABLE, 0); }
+		public TerminalNode COMMA(int i) {
+			return getToken(GramaticaParser.COMMA, i);
+		}
+		public CrearTBContext(TOperationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterCrearTB(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitCrearTB(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitCrearTB(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class EliminarTBContext extends TOperationContext {
+		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
+		public TerminalNode DROP() { return getToken(GramaticaParser.DROP, 0); }
+		public TerminalNode TABLE() { return getToken(GramaticaParser.TABLE, 0); }
+		public EliminarTBContext(TOperationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterEliminarTB(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitEliminarTB(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitEliminarTB(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class MostrarColumnasTBContext extends TOperationContext {
+		public TerminalNode SHOW() { return getToken(GramaticaParser.SHOW, 0); }
+		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
+		public TerminalNode COLUMNS() { return getToken(GramaticaParser.COLUMNS, 0); }
+		public TerminalNode FROM() { return getToken(GramaticaParser.FROM, 0); }
+		public MostrarColumnasTBContext(TOperationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterMostrarColumnasTB(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitMostrarColumnasTB(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitMostrarColumnasTB(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -456,6 +621,7 @@ public class GramaticaParser extends Parser {
 			setState(169);
 			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 			case 1:
+				_localctx = new CrearTBContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(123); match(CREATE);
@@ -496,6 +662,7 @@ public class GramaticaParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new AlterarTBContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(145); match(ALTER);
@@ -531,6 +698,7 @@ public class GramaticaParser extends Parser {
 				}
 				break;
 			case 3:
+				_localctx = new EliminarTBContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(160); match(DROP);
@@ -539,6 +707,7 @@ public class GramaticaParser extends Parser {
 				}
 				break;
 			case 4:
+				_localctx = new MostrarTablasTBContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(163); match(SHOW);
@@ -546,6 +715,7 @@ public class GramaticaParser extends Parser {
 				}
 				break;
 			case 5:
+				_localctx = new MostrarColumnasTBContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(165); match(SHOW);

@@ -30,17 +30,12 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAndExp(@NotNull GramaticaParser.AndExpContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#tOperation}.
+	 * Visit a parse tree produced by the {@code alterarDB}
+	 * labeled alternative in {@link GramaticaParser#dbOperation}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTOperation(@NotNull GramaticaParser.TOperationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#dbOperation}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDbOperation(@NotNull GramaticaParser.DbOperationContext ctx);
+	T visitAlterarDB(@NotNull GramaticaParser.AlterarDBContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#insert}.
 	 * @param ctx the parse tree
@@ -65,6 +60,13 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitEntero(@NotNull GramaticaParser.EnteroContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code crearDB}
+	 * labeled alternative in {@link GramaticaParser#dbOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCrearDB(@NotNull GramaticaParser.CrearDBContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#type}.
 	 * @param ctx the parse tree
@@ -198,11 +200,32 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpression(@NotNull GramaticaParser.ExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code usarDB}
+	 * labeled alternative in {@link GramaticaParser#dbOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUsarDB(@NotNull GramaticaParser.UsarDBContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#glExp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitGlExp(@NotNull GramaticaParser.GlExpContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code mostrarDB}
+	 * labeled alternative in {@link GramaticaParser#dbOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMostrarDB(@NotNull GramaticaParser.MostrarDBContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code mostrarTablasTB}
+	 * labeled alternative in {@link GramaticaParser#tOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMostrarTablasTB(@NotNull GramaticaParser.MostrarTablasTBContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#query}.
 	 * @param ctx the parse tree
@@ -222,6 +245,20 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitOrExp(@NotNull GramaticaParser.OrExpContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code eliminarTB}
+	 * labeled alternative in {@link GramaticaParser#tOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEliminarTB(@NotNull GramaticaParser.EliminarTBContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code mostrarColumnasTB}
+	 * labeled alternative in {@link GramaticaParser#tOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMostrarColumnasTB(@NotNull GramaticaParser.MostrarColumnasTBContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#sqlProgram}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -240,11 +277,32 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTableAction(@NotNull GramaticaParser.TableActionContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code alterarTB}
+	 * labeled alternative in {@link GramaticaParser#tOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAlterarTB(@NotNull GramaticaParser.AlterarTBContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#constraint}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitConstraint(@NotNull GramaticaParser.ConstraintContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code crearTB}
+	 * labeled alternative in {@link GramaticaParser#tOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCrearTB(@NotNull GramaticaParser.CrearTBContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code eliminarDB}
+	 * labeled alternative in {@link GramaticaParser#dbOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEliminarDB(@NotNull GramaticaParser.EliminarDBContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#decimal}.
 	 * @param ctx the parse tree
