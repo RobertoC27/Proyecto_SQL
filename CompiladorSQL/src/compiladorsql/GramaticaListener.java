@@ -51,36 +51,6 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitAlterarDB(@NotNull GramaticaParser.AlterarDBContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#insert}.
-	 * @param ctx the parse tree
-	 */
-	void enterInsert(@NotNull GramaticaParser.InsertContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#insert}.
-	 * @param ctx the parse tree
-	 */
-	void exitInsert(@NotNull GramaticaParser.InsertContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#update}.
-	 * @param ctx the parse tree
-	 */
-	void enterUpdate(@NotNull GramaticaParser.UpdateContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#update}.
-	 * @param ctx the parse tree
-	 */
-	void exitUpdate(@NotNull GramaticaParser.UpdateContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#orderBy}.
-	 * @param ctx the parse tree
-	 */
-	void enterOrderBy(@NotNull GramaticaParser.OrderByContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#orderBy}.
-	 * @param ctx the parse tree
-	 */
-	void exitOrderBy(@NotNull GramaticaParser.OrderByContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#entero}.
 	 * @param ctx the parse tree
 	 */
@@ -143,16 +113,6 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitConstraints(@NotNull GramaticaParser.ConstraintsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#notExp}.
-	 * @param ctx the parse tree
-	 */
-	void enterNotExp(@NotNull GramaticaParser.NotExpContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#notExp}.
-	 * @param ctx the parse tree
-	 */
-	void exitNotExp(@NotNull GramaticaParser.NotExpContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#relExp}.
 	 * @param ctx the parse tree
 	 */
@@ -163,25 +123,15 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitRelExp(@NotNull GramaticaParser.RelExpContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#delete}.
+	 * Enter a parse tree produced by {@link GramaticaParser#nUM_MONTH}.
 	 * @param ctx the parse tree
 	 */
-	void enterDelete(@NotNull GramaticaParser.DeleteContext ctx);
+	void enterNUM_MONTH(@NotNull GramaticaParser.NUM_MONTHContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#delete}.
+	 * Exit a parse tree produced by {@link GramaticaParser#nUM_MONTH}.
 	 * @param ctx the parse tree
 	 */
-	void exitDelete(@NotNull GramaticaParser.DeleteContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#literal}.
-	 * @param ctx the parse tree
-	 */
-	void enterLiteral(@NotNull GramaticaParser.LiteralContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#literal}.
-	 * @param ctx the parse tree
-	 */
-	void exitLiteral(@NotNull GramaticaParser.LiteralContext ctx);
+	void exitNUM_MONTH(@NotNull GramaticaParser.NUM_MONTHContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#eqExp}.
 	 * @param ctx the parse tree
@@ -212,16 +162,6 @@ public interface GramaticaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExp5(@NotNull GramaticaParser.Exp5Context ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#statement}.
-	 * @param ctx the parse tree
-	 */
-	void enterStatement(@NotNull GramaticaParser.StatementContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#statement}.
-	 * @param ctx the parse tree
-	 */
-	void exitStatement(@NotNull GramaticaParser.StatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#exp4}.
 	 * @param ctx the parse tree
@@ -263,16 +203,6 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitExp1(@NotNull GramaticaParser.Exp1Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#factor}.
-	 * @param ctx the parse tree
-	 */
-	void enterFactor(@NotNull GramaticaParser.FactorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#factor}.
-	 * @param ctx the parse tree
-	 */
-	void exitFactor(@NotNull GramaticaParser.FactorContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#exp}.
 	 * @param ctx the parse tree
 	 */
@@ -282,26 +212,6 @@ public interface GramaticaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExp(@NotNull GramaticaParser.ExpContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#value}.
-	 * @param ctx the parse tree
-	 */
-	void enterValue(@NotNull GramaticaParser.ValueContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#value}.
-	 * @param ctx the parse tree
-	 */
-	void exitValue(@NotNull GramaticaParser.ValueContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#dOperation}.
-	 * @param ctx the parse tree
-	 */
-	void enterDOperation(@NotNull GramaticaParser.DOperationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#dOperation}.
-	 * @param ctx the parse tree
-	 */
-	void exitDOperation(@NotNull GramaticaParser.DOperationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#unarianFactorExp}.
 	 * @param ctx the parse tree
@@ -313,15 +223,15 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitUnarianFactorExp(@NotNull GramaticaParser.UnarianFactorExpContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#expression}.
+	 * Enter a parse tree produced by {@link GramaticaParser#nUM_DAY}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpression(@NotNull GramaticaParser.ExpressionContext ctx);
+	void enterNUM_DAY(@NotNull GramaticaParser.NUM_DAYContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#expression}.
+	 * Exit a parse tree produced by {@link GramaticaParser#nUM_DAY}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpression(@NotNull GramaticaParser.ExpressionContext ctx);
+	void exitNUM_DAY(@NotNull GramaticaParser.NUM_DAYContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code usarDB}
 	 * labeled alternative in {@link GramaticaParser#dbOperation}.
@@ -357,18 +267,6 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitMostrarDB(@NotNull GramaticaParser.MostrarDBContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code mostrarTablasTB}
-	 * labeled alternative in {@link GramaticaParser#tOperation}.
-	 * @param ctx the parse tree
-	 */
-	void enterMostrarTablasTB(@NotNull GramaticaParser.MostrarTablasTBContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code mostrarTablasTB}
-	 * labeled alternative in {@link GramaticaParser#tOperation}.
-	 * @param ctx the parse tree
-	 */
-	void exitMostrarTablasTB(@NotNull GramaticaParser.MostrarTablasTBContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#query}.
 	 * @param ctx the parse tree
 	 */
@@ -379,37 +277,15 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitQuery(@NotNull GramaticaParser.QueryContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#column}.
+	 * Enter a parse tree produced by {@link GramaticaParser#nUM_YEAR}.
 	 * @param ctx the parse tree
 	 */
-	void enterColumn(@NotNull GramaticaParser.ColumnContext ctx);
+	void enterNUM_YEAR(@NotNull GramaticaParser.NUM_YEARContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#column}.
+	 * Exit a parse tree produced by {@link GramaticaParser#nUM_YEAR}.
 	 * @param ctx the parse tree
 	 */
-	void exitColumn(@NotNull GramaticaParser.ColumnContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#orExp}.
-	 * @param ctx the parse tree
-	 */
-	void enterOrExp(@NotNull GramaticaParser.OrExpContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#orExp}.
-	 * @param ctx the parse tree
-	 */
-	void exitOrExp(@NotNull GramaticaParser.OrExpContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code eliminarTB}
-	 * labeled alternative in {@link GramaticaParser#tOperation}.
-	 * @param ctx the parse tree
-	 */
-	void enterEliminarTB(@NotNull GramaticaParser.EliminarTBContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code eliminarTB}
-	 * labeled alternative in {@link GramaticaParser#tOperation}.
-	 * @param ctx the parse tree
-	 */
-	void exitEliminarTB(@NotNull GramaticaParser.EliminarTBContext ctx);
+	void exitNUM_YEAR(@NotNull GramaticaParser.NUM_YEARContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code mostrarColumnasTB}
 	 * labeled alternative in {@link GramaticaParser#tOperation}.
@@ -452,6 +328,170 @@ public interface GramaticaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTableAction(@NotNull GramaticaParser.TableActionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#decimal}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecimal(@NotNull GramaticaParser.DecimalContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#decimal}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecimal(@NotNull GramaticaParser.DecimalContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#insert}.
+	 * @param ctx the parse tree
+	 */
+	void enterInsert(@NotNull GramaticaParser.InsertContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#insert}.
+	 * @param ctx the parse tree
+	 */
+	void exitInsert(@NotNull GramaticaParser.InsertContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#update}.
+	 * @param ctx the parse tree
+	 */
+	void enterUpdate(@NotNull GramaticaParser.UpdateContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#update}.
+	 * @param ctx the parse tree
+	 */
+	void exitUpdate(@NotNull GramaticaParser.UpdateContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#orderBy}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrderBy(@NotNull GramaticaParser.OrderByContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#orderBy}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrderBy(@NotNull GramaticaParser.OrderByContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#notExp}.
+	 * @param ctx the parse tree
+	 */
+	void enterNotExp(@NotNull GramaticaParser.NotExpContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#notExp}.
+	 * @param ctx the parse tree
+	 */
+	void exitNotExp(@NotNull GramaticaParser.NotExpContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#delete}.
+	 * @param ctx the parse tree
+	 */
+	void enterDelete(@NotNull GramaticaParser.DeleteContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#delete}.
+	 * @param ctx the parse tree
+	 */
+	void exitDelete(@NotNull GramaticaParser.DeleteContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#literal}.
+	 * @param ctx the parse tree
+	 */
+	void enterLiteral(@NotNull GramaticaParser.LiteralContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#literal}.
+	 * @param ctx the parse tree
+	 */
+	void exitLiteral(@NotNull GramaticaParser.LiteralContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatement(@NotNull GramaticaParser.StatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatement(@NotNull GramaticaParser.StatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void enterFactor(@NotNull GramaticaParser.FactorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void exitFactor(@NotNull GramaticaParser.FactorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue(@NotNull GramaticaParser.ValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue(@NotNull GramaticaParser.ValueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#dOperation}.
+	 * @param ctx the parse tree
+	 */
+	void enterDOperation(@NotNull GramaticaParser.DOperationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#dOperation}.
+	 * @param ctx the parse tree
+	 */
+	void exitDOperation(@NotNull GramaticaParser.DOperationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpression(@NotNull GramaticaParser.ExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpression(@NotNull GramaticaParser.ExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code mostrarTablasTB}
+	 * labeled alternative in {@link GramaticaParser#tOperation}.
+	 * @param ctx the parse tree
+	 */
+	void enterMostrarTablasTB(@NotNull GramaticaParser.MostrarTablasTBContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code mostrarTablasTB}
+	 * labeled alternative in {@link GramaticaParser#tOperation}.
+	 * @param ctx the parse tree
+	 */
+	void exitMostrarTablasTB(@NotNull GramaticaParser.MostrarTablasTBContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#column}.
+	 * @param ctx the parse tree
+	 */
+	void enterColumn(@NotNull GramaticaParser.ColumnContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#column}.
+	 * @param ctx the parse tree
+	 */
+	void exitColumn(@NotNull GramaticaParser.ColumnContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#orExp}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrExp(@NotNull GramaticaParser.OrExpContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#orExp}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrExp(@NotNull GramaticaParser.OrExpContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code eliminarTB}
+	 * labeled alternative in {@link GramaticaParser#tOperation}.
+	 * @param ctx the parse tree
+	 */
+	void enterEliminarTB(@NotNull GramaticaParser.EliminarTBContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code eliminarTB}
+	 * labeled alternative in {@link GramaticaParser#tOperation}.
+	 * @param ctx the parse tree
+	 */
+	void exitEliminarTB(@NotNull GramaticaParser.EliminarTBContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code alterarTB}
 	 * labeled alternative in {@link GramaticaParser#tOperation}.
@@ -498,14 +538,4 @@ public interface GramaticaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEliminarDB(@NotNull GramaticaParser.EliminarDBContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#decimal}.
-	 * @param ctx the parse tree
-	 */
-	void enterDecimal(@NotNull GramaticaParser.DecimalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#decimal}.
-	 * @param ctx the parse tree
-	 */
-	void exitDecimal(@NotNull GramaticaParser.DecimalContext ctx);
 }

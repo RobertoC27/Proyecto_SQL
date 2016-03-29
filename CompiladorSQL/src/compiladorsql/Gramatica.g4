@@ -82,7 +82,12 @@ value: entero | decimal | fecha | character | nullo;
 nullo: NULO;
 entero:(MINUS)? NUM;
 decimal: entero DOT NUM;
-fecha: NUM_DATE;
+fecha:  NUM_DATE ;//MINUS nUM_MONTH MINUS nUM_DAY COMILLA;
+
+nUM_YEAR:NUM ;
+nUM_MONTH:NUM;
+nUM_DAY:NUM;
+
 character: CHARACTER;
 
 update: UPDATE ID SET asignacion (COMMA asignacion)* (WHERE exp1)?;
@@ -183,11 +188,8 @@ NUM: DIGIT(DIGIT)* ;
 fragment LETTER: ( 'a'..'z' | 'A'..'Z') ;
 fragment DIGIT: '0'..'9' ;
 
-NUM_YEAR:DIGIT DIGIT DIGIT DIGIT ;
-NUM_MONTH:DIGIT DIGIT ;
-NUM_DAY:DIGIT DIGIT ;
-
-NUM_DATE:  '\'' DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT'-' DIGIT DIGIT'\'' ;
+COMILLA:'\'';
+NUM_DATE:  '\'' DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '\'' ;
 CHARACTER: '\''~('\r'|'\n'|'\'')* '\'';
 DOTCOMMA: ';';
 LPARENT: '(';

@@ -37,24 +37,6 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAlterarDB(@NotNull GramaticaParser.AlterarDBContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#insert}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInsert(@NotNull GramaticaParser.InsertContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#update}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitUpdate(@NotNull GramaticaParser.UpdateContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#orderBy}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOrderBy(@NotNull GramaticaParser.OrderByContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#entero}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -92,29 +74,17 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitConstraints(@NotNull GramaticaParser.ConstraintsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#notExp}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNotExp(@NotNull GramaticaParser.NotExpContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#relExp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitRelExp(@NotNull GramaticaParser.RelExpContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#delete}.
+	 * Visit a parse tree produced by {@link GramaticaParser#nUM_MONTH}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDelete(@NotNull GramaticaParser.DeleteContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#literal}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLiteral(@NotNull GramaticaParser.LiteralContext ctx);
+	T visitNUM_MONTH(@NotNull GramaticaParser.NUM_MONTHContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#eqExp}.
 	 * @param ctx the parse tree
@@ -133,12 +103,6 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitExp5(@NotNull GramaticaParser.Exp5Context ctx);
-	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#statement}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitStatement(@NotNull GramaticaParser.StatementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#exp4}.
 	 * @param ctx the parse tree
@@ -164,29 +128,11 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExp1(@NotNull GramaticaParser.Exp1Context ctx);
 	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#factor}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFactor(@NotNull GramaticaParser.FactorContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#exp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitExp(@NotNull GramaticaParser.ExpContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#value}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitValue(@NotNull GramaticaParser.ValueContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#dOperation}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDOperation(@NotNull GramaticaParser.DOperationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#unarianFactorExp}.
 	 * @param ctx the parse tree
@@ -194,11 +140,11 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitUnarianFactorExp(@NotNull GramaticaParser.UnarianFactorExpContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#expression}.
+	 * Visit a parse tree produced by {@link GramaticaParser#nUM_DAY}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpression(@NotNull GramaticaParser.ExpressionContext ctx);
+	T visitNUM_DAY(@NotNull GramaticaParser.NUM_DAYContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code usarDB}
 	 * labeled alternative in {@link GramaticaParser#dbOperation}.
@@ -220,37 +166,17 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMostrarDB(@NotNull GramaticaParser.MostrarDBContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code mostrarTablasTB}
-	 * labeled alternative in {@link GramaticaParser#tOperation}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMostrarTablasTB(@NotNull GramaticaParser.MostrarTablasTBContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#query}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitQuery(@NotNull GramaticaParser.QueryContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#column}.
+	 * Visit a parse tree produced by {@link GramaticaParser#nUM_YEAR}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitColumn(@NotNull GramaticaParser.ColumnContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#orExp}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOrExp(@NotNull GramaticaParser.OrExpContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code eliminarTB}
-	 * labeled alternative in {@link GramaticaParser#tOperation}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEliminarTB(@NotNull GramaticaParser.EliminarTBContext ctx);
+	T visitNUM_YEAR(@NotNull GramaticaParser.NUM_YEARContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code mostrarColumnasTB}
 	 * labeled alternative in {@link GramaticaParser#tOperation}.
@@ -276,6 +202,104 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitTableAction(@NotNull GramaticaParser.TableActionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#decimal}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDecimal(@NotNull GramaticaParser.DecimalContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#insert}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInsert(@NotNull GramaticaParser.InsertContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#update}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUpdate(@NotNull GramaticaParser.UpdateContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#orderBy}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrderBy(@NotNull GramaticaParser.OrderByContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#notExp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNotExp(@NotNull GramaticaParser.NotExpContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#delete}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDelete(@NotNull GramaticaParser.DeleteContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#literal}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLiteral(@NotNull GramaticaParser.LiteralContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStatement(@NotNull GramaticaParser.StatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#factor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFactor(@NotNull GramaticaParser.FactorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitValue(@NotNull GramaticaParser.ValueContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#dOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDOperation(@NotNull GramaticaParser.DOperationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpression(@NotNull GramaticaParser.ExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code mostrarTablasTB}
+	 * labeled alternative in {@link GramaticaParser#tOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMostrarTablasTB(@NotNull GramaticaParser.MostrarTablasTBContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#column}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitColumn(@NotNull GramaticaParser.ColumnContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#orExp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrExp(@NotNull GramaticaParser.OrExpContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code eliminarTB}
+	 * labeled alternative in {@link GramaticaParser#tOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEliminarTB(@NotNull GramaticaParser.EliminarTBContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code alterarTB}
 	 * labeled alternative in {@link GramaticaParser#tOperation}.
@@ -303,10 +327,4 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitEliminarDB(@NotNull GramaticaParser.EliminarDBContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GramaticaParser#decimal}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDecimal(@NotNull GramaticaParser.DecimalContext ctx);
 }
