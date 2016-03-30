@@ -23,27 +23,32 @@ dOperation: insert
 | delete 
 | query;
 
-tOperation: CREATE TABLE ID LPARENT ID type (COMMA ID type)* (constraints)* RPARENT #crearTB
+tOperation: CREATE TABLE ID LPARENT columna (COMMA columna)* (constraints)* RPARENT #crearTB
 | ALTER TABLE ID (tableAction (COMMA tableAction)*)+ #alterarTB
 | DROP TABLE ID #eliminarTB
 | SHOW TABLES #mostrarTablasTB
 | SHOW COLUMNS FROM ID #mostrarColumnasTB
 ;
 
+columna:ID type;
 constraints: (CONSTRAINT constraint (COMMA CONSTRAINT constraint)*);
 
-tableAction: ADD COLUMN ID type (constraints | ) 
-| ADD CONSTRAINT constraint
-| DROP COLUMN ID
-| DROP CONSTRAINT ID
-| RENAME TO ID
+tableAction: ADD COLUMN ID type (constraints | ) #addColumnTB
+| ADD CONSTRAINT constraint #addConstraintTB
+| DROP COLUMN ID #dropColumnTB
+| DROP CONSTRAINT ID #dropConstraintTB
+| RENAME TO ID #renameColumnTB
 ;
 
-type: INT | FLOAT | DATE | CHAR LPARENT NUM RPARENT;
+type: INT #tipoEntero
+    | FLOAT #tipoFloat
+    | DATE #tipoDAte
+    | CHAR LPARENT NUM RPARENT #tipoChar
+    ;
 
-constraint: ID PRIMARY KEY LPARENT (ID(COMMA ID)*)* RPARENT
-| ID FOREIGN KEY  LPARENT (ID (COMMA ID)*)* RPARENT references
-| ID CHECK (exp1)
+constraint: ID PRIMARY KEY LPARENT (ID(COMMA ID)*)* RPARENT #constraintPK
+| ID FOREIGN KEY  LPARENT (ID (COMMA ID)*)* RPARENT references #constraintFK
+| ID CHECK (exp1) #constraintCheck
 ;
 
 references: REFERENCES ID (LPARENT (ID(COMMA ID)*)* RPARENT)?;

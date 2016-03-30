@@ -53,6 +53,18 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTipoFloat(@NotNull GramaticaParser.TipoFloatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTipoFloat(@NotNull GramaticaParser.TipoFloatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAlterarDB(@NotNull GramaticaParser.AlterarDBContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -84,18 +96,6 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCrearDB(@NotNull GramaticaParser.CrearDBContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterType(@NotNull GramaticaParser.TypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitType(@NotNull GramaticaParser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -269,6 +269,18 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterConstraintPK(@NotNull GramaticaParser.ConstraintPKContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConstraintPK(@NotNull GramaticaParser.ConstraintPKContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterNUM_DAY(@NotNull GramaticaParser.NUM_DAYContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -341,6 +353,18 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDropConstraintTB(@NotNull GramaticaParser.DropConstraintTBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDropConstraintTB(@NotNull GramaticaParser.DropConstraintTBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMostrarColumnasTB(@NotNull GramaticaParser.MostrarColumnasTBContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -377,13 +401,25 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTableAction(@NotNull GramaticaParser.TableActionContext ctx) { }
+	@Override public void enterTipoDAte(@NotNull GramaticaParser.TipoDAteContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTableAction(@NotNull GramaticaParser.TableActionContext ctx) { }
+	@Override public void exitTipoDAte(@NotNull GramaticaParser.TipoDAteContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAddConstraintTB(@NotNull GramaticaParser.AddConstraintTBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAddConstraintTB(@NotNull GramaticaParser.AddConstraintTBContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -396,6 +432,18 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDecimal(@NotNull GramaticaParser.DecimalContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAddColumnTB(@NotNull GramaticaParser.AddColumnTBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAddColumnTB(@NotNull GramaticaParser.AddColumnTBContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -437,6 +485,18 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterRenameColumnTB(@NotNull GramaticaParser.RenameColumnTBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRenameColumnTB(@NotNull GramaticaParser.RenameColumnTBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterNotExp(@NotNull GramaticaParser.NotExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -473,6 +533,30 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterColumna(@NotNull GramaticaParser.ColumnaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitColumna(@NotNull GramaticaParser.ColumnaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConstraintCheck(@NotNull GramaticaParser.ConstraintCheckContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConstraintCheck(@NotNull GramaticaParser.ConstraintCheckContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterStatement(@NotNull GramaticaParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -480,6 +564,30 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitStatement(@NotNull GramaticaParser.StatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTipoEntero(@NotNull GramaticaParser.TipoEnteroContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTipoEntero(@NotNull GramaticaParser.TipoEnteroContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConstraintFK(@NotNull GramaticaParser.ConstraintFKContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConstraintFK(@NotNull GramaticaParser.ConstraintFKContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -528,6 +636,18 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpression(@NotNull GramaticaParser.ExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDropColumnTB(@NotNull GramaticaParser.DropColumnTBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDropColumnTB(@NotNull GramaticaParser.DropColumnTBContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -593,18 +713,6 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstraint(@NotNull GramaticaParser.ConstraintContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitConstraint(@NotNull GramaticaParser.ConstraintContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterCrearTB(@NotNull GramaticaParser.CrearTBContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -612,6 +720,18 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCrearTB(@NotNull GramaticaParser.CrearTBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTipoChar(@NotNull GramaticaParser.TipoCharContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTipoChar(@NotNull GramaticaParser.TipoCharContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

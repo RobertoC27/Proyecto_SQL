@@ -21,26 +21,37 @@ public class CompiladorSQL {
     //este comentario es para llenar espacio
     private ParseTree tree;
     private NuestroVisitor mv;
+    private boolean vB;
+
+    public CompiladorSQL(boolean vB) {
+        this.vB = vB;
+    }
     
-    public ArrayList nombre(String txt){
+    
+    
+    public void nombre(String txt){
         System.out.println("");
         ANTLRInputStream in = new ANTLRInputStream(txt);
         GramaticaLexer lexer = new GramaticaLexer(in);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         parser = new GramaticaParser(tokens);
         tree = parser.sqlProgram();
-        
         mv= new NuestroVisitor();
+        mv.setVerbose(vB);
         mv.visit(tree);
+        mv.getMDglob();
+        mv.getMDloc();
         
-        return mv.getErrores();
+        
     }
 
     public void mostrarArbol(){
         Trees.inspect(tree, parser);
     }
             
-    
+    public ArrayList<String>getErr(){
+        return mv.getErrores();
+    }
     
     
 }
