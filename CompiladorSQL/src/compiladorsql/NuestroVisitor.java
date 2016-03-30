@@ -169,6 +169,7 @@ public class NuestroVisitor<T> extends GramaticaBaseVisitor{
 
     @Override
     public T visitMostrarDB(GramaticaParser.MostrarDBContext ctx) {
+        revVerb("mostrar las DB");
         for (String name : this.metaDataGENERALDBnames) {
             System.out.println("DB------>"+name);
         }
@@ -183,7 +184,9 @@ public class NuestroVisitor<T> extends GramaticaBaseVisitor{
 
     @Override
     public T visitCrearTB(GramaticaParser.CrearTBContext ctx) {
+        
         this.revVerb("revisar si hay una DB en uso para crear la tabla");
+        
         if(!this.bUse){
             revVerb("no hay DB seleccionada");
             this.errores.add("La linea:"+ctx.start.getLine()+", ("+ctx.getText()+"), no pueder crear una tabla porque no hay DB seleccionada");
@@ -204,11 +207,11 @@ public class NuestroVisitor<T> extends GramaticaBaseVisitor{
         
         // AGREGO EL NOMBRE DE LA TABLA A LA METADATA DE LA BASE DE DATOS EN USO
         this.metaDataLOCALTBnames.add(ctx.ID().getText());
-        
+        revVerb("agregar la tabla a la metadata");
 //        BUSCAR EL INDICE DE LA TABLA RECIEN AGREGADA
         int ind=this.metaDataLOCALTBnames.indexOf(ctx.ID().getText());
-        
-
+        revVerb("buscar la tabla recien agregada");
+        revVerb("llenar las tablas con la data correspondiente");
 //  LLENAR LA INFO DE LAS COLUMNAS EN LA METADATA LOCAL
         for (int i = 0; i < ctx.columna().size(); i++) {
             
@@ -227,7 +230,7 @@ public class NuestroVisitor<T> extends GramaticaBaseVisitor{
             this.metaDataLOCALTBtipos.get(ind).add(split[1]);
             
         }
-        
+        revVerb("actualizar metadata global");
         //SE ASIGNA ESTA VARIBLE PARA QUE FUNCIONE BIEN LA BUSQUEDA
         hb=dirActual.substring(dirActual.indexOf("\\")+1);
 
@@ -242,6 +245,81 @@ public class NuestroVisitor<T> extends GramaticaBaseVisitor{
         return (T)"";
     }
 
+    @Override
+    public T visitAlterarTB(GramaticaParser.AlterarTBContext ctx) {
+        hb=ctx.ID().getText();
+        revVerb("voy a alterar la DB");
+        return (T)visitChildren(ctx);
+    }
+
+    @Override
+    public T visitAddColumnTB(GramaticaParser.AddColumnTBContext ctx) {
+        
+        /******************************
+            FALTA HACER LAS VALIDACIONES CON EL ARCHIVO XML
+        ******************************/
+        
+        this.revVerb("revisar si la columna que voy a insertar ya existe");
+        
+        int ind=this.metaDataLOCALTBnames.indexOf(hb);
+        
+        String data=(String)visit(ctx.columna());
+
+        //separar el id y el tipo para agregarlos a las distintas listas
+        String[] split = data.split(",");
+
+//      AGREGO LAS NUEVAS POSICIONES QUE VOY A NECESITAR MAS ADELANTE
+        
+        this.metaDataLOCALTBcolumnas.add(new ArrayList());//.get(i).add(split[0]);
+        this.metaDataLOCALTBtipos.add(new ArrayList());//.add(split[1]);
+
+//            AGREGO EL EL NOMBRE Y TIPO DE LA COLUMNA EN LA POSICION CORRESPONDIENTE A LA TABLA 
+//        REVISO QUE NO EXISTA UNA COLUMNA CON EL MISMO NOMBRE
+        
+        if(!this.metaDataLOCALTBcolumnas.get(ind).contains(split[0])){
+            
+//            agregar a la tabla correspondiente y aumetar el contadar de tablas en metadata general
+            this.metaDataLOCALTBcolumnas.get(ind).add(split[0]);
+            this.metaDataLOCALTBtipos.get(ind).add(split[1]);
+            
+
+            revVerb("la columna fue insertada con exito");
+            
+        }else{
+            this.errores.add("La linea:"+ctx.start.getLine()+", ("+ctx.getText()+") trata de insertar la columna ("+ctx.columna().getText()+") que ya existe");
+            return (T)"error al tratar de insertar columna repetida";
+        }
+        
+        
+        return (T)"";
+    }
+
+    @Override
+    public T visitRenameTB(GramaticaParser.RenameTBContext ctx) {
+        revVerb("voy a revisar si la tabla que voy a renombrar si existe");
+        /******************************
+            FALTA HACER LAS VALIDACIONES CON EL ARCHIVO XML
+        ******************************/
+        int ind=this.metaDataLOCALTBnames.indexOf(hb);
+        if(ind==-1){
+            this.errores.add("La linea:"+ctx.getParent().start.getLine()+", ("+ctx.getParent().getText()+") intenta renombra la tabla ("+hb+") que no existe");
+            return (T)"error al buscar la tabla para renombrarla";
+        }
+        if(this.metaDataLOCALTBnames.contains(ctx.ID().getText())){
+            this.errores.add("La linea:"+ctx.getParent().start.getLine()+", ("+ctx.getParent().getText()+") intenta renombra la tabla ("+hb+") con el nombre ("+ctx.ID().getText()+") ya existe");
+            return (T)"error al renombrar la tabla porque ya existe";
+        }
+        
+        this.metaDataLOCALTBnames.set(ind, ctx.ID().getText());
+        revVerb("tabla Renombrada exitosamente");
+        return (T)"";
+    }
+    
+    @Override
+    public T visitDropColumnTB(GramaticaParser.DropColumnTBContext ctx) {
+        return (T)"";
+    }
+    
     @Override
     public T visitColumna(GramaticaParser.ColumnaContext ctx) {
         String td=ctx.ID().getText()+","+visit(ctx.type());

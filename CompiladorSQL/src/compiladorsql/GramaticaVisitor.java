@@ -257,13 +257,6 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitOrderBy(@NotNull GramaticaParser.OrderByContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code renameColumnTB}
-	 * labeled alternative in {@link GramaticaParser#tableAction}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRenameColumnTB(@NotNull GramaticaParser.RenameColumnTBContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#notExp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -371,6 +364,13 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitEliminarTB(@NotNull GramaticaParser.EliminarTBContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code renameTB}
+	 * labeled alternative in {@link GramaticaParser#tableAction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRenameTB(@NotNull GramaticaParser.RenameTBContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code alterarTB}
 	 * labeled alternative in {@link GramaticaParser#tOperation}.

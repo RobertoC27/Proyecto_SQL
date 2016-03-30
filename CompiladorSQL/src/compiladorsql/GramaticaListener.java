@@ -421,18 +421,6 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitOrderBy(@NotNull GramaticaParser.OrderByContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code renameColumnTB}
-	 * labeled alternative in {@link GramaticaParser#tableAction}.
-	 * @param ctx the parse tree
-	 */
-	void enterRenameColumnTB(@NotNull GramaticaParser.RenameColumnTBContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code renameColumnTB}
-	 * labeled alternative in {@link GramaticaParser#tableAction}.
-	 * @param ctx the parse tree
-	 */
-	void exitRenameColumnTB(@NotNull GramaticaParser.RenameColumnTBContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#notExp}.
 	 * @param ctx the parse tree
 	 */
@@ -614,6 +602,18 @@ public interface GramaticaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEliminarTB(@NotNull GramaticaParser.EliminarTBContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code renameTB}
+	 * labeled alternative in {@link GramaticaParser#tableAction}.
+	 * @param ctx the parse tree
+	 */
+	void enterRenameTB(@NotNull GramaticaParser.RenameTBContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code renameTB}
+	 * labeled alternative in {@link GramaticaParser#tableAction}.
+	 * @param ctx the parse tree
+	 */
+	void exitRenameTB(@NotNull GramaticaParser.RenameTBContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code alterarTB}
 	 * labeled alternative in {@link GramaticaParser#tOperation}.

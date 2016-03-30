@@ -485,18 +485,6 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRenameColumnTB(@NotNull GramaticaParser.RenameColumnTBContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRenameColumnTB(@NotNull GramaticaParser.RenameColumnTBContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterNotExp(@NotNull GramaticaParser.NotExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -696,6 +684,18 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitEliminarTB(@NotNull GramaticaParser.EliminarTBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRenameTB(@NotNull GramaticaParser.RenameTBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRenameTB(@NotNull GramaticaParser.RenameTBContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -33,11 +33,11 @@ tOperation: CREATE TABLE ID LPARENT columna (COMMA columna)* (constraints)* RPAR
 columna:ID type;
 constraints: (CONSTRAINT constraint (COMMA CONSTRAINT constraint)*);
 
-tableAction: ADD COLUMN ID type (constraints | ) #addColumnTB
+tableAction: ADD COLUMN columna (constraints | ) #addColumnTB
 | ADD CONSTRAINT constraint #addConstraintTB
 | DROP COLUMN ID #dropColumnTB
 | DROP CONSTRAINT ID #dropConstraintTB
-| RENAME TO ID #renameColumnTB
+| RENAME TO ID #renameTB
 ;
 
 type: INT #tipoEntero

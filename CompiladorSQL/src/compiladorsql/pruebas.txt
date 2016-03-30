@@ -46,3 +46,17 @@ ALTER TABLE recibo ADD CONSTRAINT pkRecibo PRIMARY KEY (id);
 ALTER TABLE recibo ADD CONSTRAINT fkReciboClie FOREIGN KEY (idCliente) REFERENCES cliente(id);
 ALTER TABLE recibo ADD CONSTRAINT fkReciboProd FOREIGN KEY  (idProducto) REFERENCES producto(id);
 CREATE TABLE empleado (id int, nombre char(20) CONSTRAINT pkEmpleado PRIMARY KEY (id));
+
+
+
+
+create database p1;
+create database p3;
+create database p4;
+alter database p1 rename to p2;
+use database p2;
+create table nv (gt int, rc float, nq date);
+use database p4;
+CREATE TABLE producto (id int CONSTRAINT pkPrecio PRIMARY KEY  (id));
+CREATE TABLE recibo (idCliente int, idProducto int, totalCompra float,id int);
+CREATE TABLE empleado (id int, nombre char(20) CONSTRAINT pkEmpleado PRIMARY KEY (id));
