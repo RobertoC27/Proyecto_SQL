@@ -24,6 +24,7 @@ import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import compiladorsql.*;
+import java.util.ArrayList;
 import org.antlr.v4.gui.Trees;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -34,9 +35,9 @@ import org.antlr.v4.runtime.tree.ParseTree;
  * @author user
  */
 public class Menu extends javax.swing.JFrame {
-    private GramaticaParser parser;
-    //este comentario es para llenar espacio
-    private ParseTree tree;
+    
+    private boolean bArbol=false,bVerb=false;
+    
     /**
      * Creates new form Menu
      */
@@ -125,6 +126,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAreaInput = new javax.swing.JTextPane(doc);
+        chekArbol = new javax.swing.JCheckBox();
+        checkVerb = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         txtAreaErrores = new java.awt.TextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -140,31 +143,60 @@ public class Menu extends javax.swing.JFrame {
         txtAreaInput.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
         jScrollPane2.setViewportView(txtAreaInput);
 
+        chekArbol.setText("Mostrar Arbol");
+        chekArbol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chekArbolActionPerformed(evt);
+            }
+        });
+
+        checkVerb.setText("Verbose");
+        checkVerb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkVerbActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(chekArbol, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkVerb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(chekArbol)
+                .addGap(27, 27, 27)
+                .addComponent(checkVerb)
+                .addContainerGap(430, Short.MAX_VALUE))
         );
 
         panelEditor.addTab("Editor", jPanel1);
 
-        txtAreaErrores.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 15)); // NOI18N
+        txtAreaErrores.setEditable(false);
+        txtAreaErrores.setFont(new java.awt.Font("Microsoft Tai Le", 0, 17)); // NOI18N
         txtAreaErrores.setForeground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtAreaErrores, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+            .addComponent(txtAreaErrores, javax.swing.GroupLayout.DEFAULT_SIZE, 1012, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtAreaErrores, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+            .addComponent(txtAreaErrores, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
         );
 
         panelEditor.addTab("Errores", jPanel2);
@@ -269,18 +301,39 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuGuardarActionPerformed
 
     private void menuEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEjecutarActionPerformed
-        CompiladorSQL comp=new CompiladorSQL();
+        System.out.println("");
+        CompiladorSQL comp=new CompiladorSQL(bVerb);
         this.txtAreaErrores.setText("ESTE ES UN ERROR");
         String texto = txtAreaInput.getText();        
-        ANTLRInputStream in = new ANTLRInputStream(texto);
-        GramaticaLexer lexer = new GramaticaLexer(in);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        parser = new GramaticaParser(tokens);
-//        parser.removeErrorListeners();
-        tree = parser.sqlProgram();
-        //parser.addErrorListener();
-        Trees.inspect(tree, parser);
+        comp.nombre(texto);
+        ArrayList<String>err=comp.getErr();
+        //revisar si la bandera para mostrar el arbol es verdadera
+        if(this.bArbol){
+            comp.mostrarArbol();
+        }
+//        si hay errores detectados durante el visit se muestra este mensaje
+        if(err.size()>0){
+            JOptionPane.showMessageDialog(null,"El programa tiene errores semánticos, vaya a la tab ERRORES para mayor info.","Error",JOptionPane.ERROR_MESSAGE);
+            texto="";
+            for (String error : err) {
+                texto=error+newline;
+            }
+            this.txtAreaErrores.setText(texto);
+        }
     }//GEN-LAST:event_menuEjecutarActionPerformed
+    /*
+        este metodo sirve para saber si el arbol sintactico debe ser desplegado
+    */
+    private void chekArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chekArbolActionPerformed
+        this.bArbol=!this.bArbol;
+    }//GEN-LAST:event_chekArbolActionPerformed
+
+    /*
+    este metodo sirve para saber si la opcion verbose va a ser activada 
+    */
+    private void checkVerbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkVerbActionPerformed
+        this.bVerb=!this.bVerb;
+    }//GEN-LAST:event_checkVerbActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,6 +371,8 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox checkVerb;
+    private javax.swing.JCheckBox chekArbol;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

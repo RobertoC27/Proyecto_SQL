@@ -23,27 +23,32 @@ dOperation: insert
 | delete 
 | query;
 
-tOperation: CREATE TABLE ID LPARENT ID type (COMMA ID type)* (constraints)* RPARENT #crearTB
+tOperation: CREATE TABLE ID LPARENT columna (COMMA columna)* (constraints)* RPARENT #crearTB
 | ALTER TABLE ID (tableAction (COMMA tableAction)*)+ #alterarTB
 | DROP TABLE ID #eliminarTB
 | SHOW TABLES #mostrarTablasTB
 | SHOW COLUMNS FROM ID #mostrarColumnasTB
 ;
 
+columna:ID type;
 constraints: (CONSTRAINT constraint (COMMA CONSTRAINT constraint)*);
 
-tableAction: ADD COLUMN ID type (constraints | ) 
-| ADD CONSTRAINT constraint
-| DROP COLUMN ID
-| DROP CONSTRAINT ID
-| RENAME TO ID
+tableAction: ADD COLUMN columna (constraints | ) #addColumnTB
+| ADD CONSTRAINT constraint #addConstraintTB
+| DROP COLUMN ID #dropColumnTB
+| DROP CONSTRAINT ID #dropConstraintTB
+| RENAME TO ID #renameTB
 ;
 
-type: INT | FLOAT | DATE | CHAR LPARENT NUM RPARENT;
+type: INT #tipoEntero
+    | FLOAT #tipoFloat
+    | DATE #tipoDAte
+    | CHAR LPARENT NUM RPARENT #tipoChar
+    ;
 
-constraint: ID PRIMARY KEY LPARENT (ID(COMMA ID)*)* RPARENT
-| ID FOREIGN KEY  LPARENT (ID (COMMA ID)*)* RPARENT references
-| ID CHECK (exp1)
+constraint: ID PRIMARY KEY LPARENT (ID(COMMA ID)*)* RPARENT #constraintPK
+| ID FOREIGN KEY  LPARENT (ID (COMMA ID)*)* RPARENT references #constraintFK
+| ID CHECK (exp1) #constraintCheck
 ;
 
 references: REFERENCES ID (LPARENT (ID(COMMA ID)*)* RPARENT)?;
@@ -82,7 +87,12 @@ value: entero | decimal | fecha | character | nullo;
 nullo: NULO;
 entero:(MINUS)? NUM;
 decimal: entero DOT NUM;
-fecha: NUM_DATE;
+fecha:  NUM_DATE ;//MINUS nUM_MONTH MINUS nUM_DAY COMILLA;
+
+nUM_YEAR:NUM ;
+nUM_MONTH:NUM;
+nUM_DAY:NUM;
+
 character: CHARACTER;
 
 update: UPDATE ID SET asignacion (COMMA asignacion)* (WHERE exp1)?;
@@ -183,11 +193,8 @@ NUM: DIGIT(DIGIT)* ;
 fragment LETTER: ( 'a'..'z' | 'A'..'Z') ;
 fragment DIGIT: '0'..'9' ;
 
-NUM_YEAR:DIGIT DIGIT DIGIT DIGIT ;
-NUM_MONTH:DIGIT DIGIT ;
-NUM_DAY:DIGIT DIGIT ;
-
-NUM_DATE:  '\'' DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT'-' DIGIT DIGIT'\'' ;
+COMILLA:'\'';
+NUM_DATE:  '\'' DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '\'' ;
 CHARACTER: '\''~('\r'|'\n'|'\'')* '\'';
 DOTCOMMA: ';';
 LPARENT: '(';
